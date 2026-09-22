@@ -21,43 +21,54 @@ SatQuery AI is engineered on the principle of **Decoupled Perception and Physics
 
 ## 2. Four-Tier Architectural Topology
 
-```
-┌────────────────────────────────────────────────────────────────────────┐
-│               TIER 1: INTERACTION & LOCALIZATION LAYER                 │
-│  • React 18 / TypeScript / Leaflet Analyst Web Console                 │
-│  • 3-Way Persona Switcher (Farmer / District Collector / Scientist)    │
-│  • Multilingual Indic Speech-to-Text & TTS (Sarvam AI API)             │
-│  • Split-Curtain Swipe & Interactive Pixel Probe Inspector             │
-└───────────────────────────────────┬────────────────────────────────────┘
-                                    │ REST / JSON (Sanitized OpenAPI)
-                                    ▼
-┌────────────────────────────────────────────────────────────────────────┐
-│            TIER 2: AGENTIC ORCHESTRATION & DISCOVERY BRAIN             │
-│  • Query Contract Validator (Spatial AST & Modality Intent Resolver)   │
-│  • Competing Hypothesis Ledger (Prior & Posterior Evidence Tracking)   │
-│  • Value-of-Evidence (VOE) Next-Action Selector & Replanner            │
-│  • Multi-Tier Provider Failover (High-Throughput / Local Physics Mode) │
-└───────────────────────────────────┬────────────────────────────────────┘
-                                    │ Structured Next-Best Action
-                                    ▼
-┌────────────────────────────────────────────────────────────────────────┐
-│           TIER 3: SPECIALIST DISPATCH & FOUNDATION FOUNDRY             │
-│  • SingleImageSpecialist: Real Multispectral Pixel Math (NDWI / NDVI)  │
-│  • SensorAwareSARProcessor: Lee 5x5 Filter, dB Radiometric Calibration │
-│  • CROMA-Base Specialist: 194.3M Joint Optical-Radar Latent Alignment  │
-│  • SegFormer-B0 Specialist: 10-Band Multi-Spectral Canopy Segmentation │
-│  • BiTemporalSpecialist: 2D Fourier Shift & Differential Clustering    │
-│  • PhysicalGISEngine: Affine Geodesic Area (Hectares / Acres)          │
-└───────────────────────────────────┬────────────────────────────────────┘
-                                    │ Verified Radiometric Measurements
-                                    ▼
-┌────────────────────────────────────────────────────────────────────────┐
-│           TIER 4: SCIENTIFIC TRUST & CRYPTOGRAPHIC PROVENANCE          │
-│  • 8-Stage Immutable Cryptographic Evidence Graph (DAG with SHA-256)   │
-│  • Spatial Nyquist-Shannon Sampling Guardrail (2x GSD Barrier)         │
-│  • Fourier 2D Phase Correlation Barrier (<6.0 px Barrier)              │
-│  • Multi-Format Exporter: Peer-Review Markdown, JSON, & PDF Briefings   │
-└────────────────────────────────────────────────────────────────────────┘
+```mermaid
+flowchart TD
+    subgraph Tier1 ["🖥️ Tier 1: Interaction & Localization Layer"]
+        T1_UI["🗺️ Leaflet WebGL Map Console<br/>(Interactive Vector Overlays)"]
+        T1_Curtain["🪟 Split-Curtain Swipe<br/>(Optical vs. SAR Inspector)"]
+        T1_Persona["👥 3-Way Persona Switcher<br/>(Farmer / Collector / Scientist)"]
+        T1_Probe["🎯 Real-Time Pixel Probe<br/>(Raw DN & Calibrated Radiometry)"]
+        T1_Voice["🎙️ Indic Multilingual Voice Engine<br/>(Sarvam AI API Integration)"]
+    end
+
+    subgraph Tier2 ["🧠 Tier 2: Agentic Orchestration Brain"]
+        T2_AST["📝 Query Intent Parser & AST<br/>(Spatial & Temporal Extractor)"]
+        T2_Contract["📋 Observation Contract Validator<br/>(CRS, Bounds & Resolution Check)"]
+        T2_Hypo["⚖️ Competing Hypotheses Ledger<br/>(Priors, Null & Target Hypotheses)"]
+        T2_Planner["🧭 VOE Next-Action Planner<br/>(Value of Evidence Optimization)"]
+    end
+
+    subgraph Tier3 ["⚙️ Tier 3: Specialist & Foundation Foundry"]
+        subgraph Sensors ["Satellite Rasters Ingested"]
+            S_Opt["🛰️ Sentinel-2 MSI Optical<br/>(10m BOA Reflectance B02–B12)"]
+            S_SAR["📡 Sentinel-1 C-SAR Radar<br/>(10m GRD Dual-Pol VV/VH)"]
+            S_Temp["⏱️ Bi-Temporal Observation Pair<br/>(Epoch T1 vs. Epoch T2)"]
+        end
+
+        subgraph Engines ["Domain Specialist Engines"]
+            E_GIS["📐 PhysicalGISEngine<br/>(Deterministic NDWI / NDVI / NDBI)"]
+            E_SAR["🌊 SensorAwareSARProcessor<br/>(Lee 5x5 Filter & dB Calibration)"]
+            E_CROMA["🔬 CROMA-Base Joint Embedder<br/>(194.3M Optical-Radar Latent)"]
+            E_Seg["🌲 SegFormer-B0 Specialist<br/>(10-Band Canopy Segmentation)"]
+            E_Ground["🎯 Florence-2-RS-LoRA<br/>(Spatial Bounding Box Grounding)"]
+            E_Change["🔄 BiTemporal Specialist<br/>(2D Fourier Phase Shift & Differencing)"]
+        end
+    end
+
+    subgraph Tier4 ["🛡️ Tier 4: Scientific Trust & Provenance"]
+        T4_Nyquist["🛑 Nyquist Epistemic Barrier<br/>(Rejects Targets < 2x GSD)"]
+        T4_CoReg["📐 Fourier Phase Co-Registration<br/>(Misregistration Barrier < 6.0 px)"]
+        T4_Arbiter["⚡ Multi-Sensor Contradiction Arbiter<br/>(Microwave Cloud Penetration)"]
+        T4_DAG["⛓️ 8-Stage Cryptographic DAG<br/>(SHA-256 Immutable Node Hashes)"]
+        T4_Output["✅ Verified Earth Insight Dossier<br/>(GeoJSON, Exact Hectares, PDF/MD)"]
+    end
+
+    %% Inter-Tier Operational Flows
+    Tier1 -->|"User Query, Persona & Spatial Extent"| Tier2
+    Tier2 -->|"Structured Dispatch & Tool Parameters"| Tier3
+    Sensors -->|"Calibrated Pixels & Metadata"| Engines
+    Engines -->|"Raw Radiometry & Spatial Proposals"| Tier4
+    Tier4 -->|"Cryptographically Verified Polygons & Dossier"| Tier1
 ```
 
 ---
@@ -66,29 +77,26 @@ SatQuery AI is engineered on the principle of **Decoupled Perception and Physics
 
 Every investigation generates an immutable directed acyclic graph where each node contains the SHA-256 cryptographic digest of its inputs and state:
 
-```
-[Node 1: User Query & Intent AST]
-       │
-       ▼
-[Node 2: Competing Hypotheses Formulation]
-       │
-       ▼
-[Node 3: Satellite Asset Registration & SHA-256 Digest]
-       │
-       ▼
-[Node 4: Specialist Action & Parameter Ingestion]
-       │
-       ▼
-[Node 5: Empirical Radiometric Measurements (Pixels)]
-       │
-       ▼
-[Node 6: Cross-Sensor Contradiction Arbitration]
-       │
-       ▼
-[Node 7: Evidence Sufficiency Verification]
-       │
-       ▼
-[Node 8: Final Synthesized Finding & Polygon Vector]
+```mermaid
+flowchart TD
+    subgraph DAG ["⛓️ 8-Stage Immutable Cryptographic Evidence Graph (DAG)"]
+        N1["<b>Node 1: User Query & Intent AST</b><br/><code>hash = SHA-256(raw_query, persona, locale)</code>"]
+        N2["<b>Node 2: Competing Hypotheses Formulation</b><br/><code>hash = SHA-256(parent_hash, H0_null, H1_target)</code>"]
+        N3["<b>Node 3: Satellite Asset Registration</b><br/><code>hash = SHA-256(parent_hash, raster_sha256, crs, gsd)</code>"]
+        N4["<b>Node 4: Specialist Parameter Ingestion</b><br/><code>hash = SHA-256(parent_hash, tools, band_indices, thresholds)</code>"]
+        N5["<b>Node 5: Empirical Radiometric Computation</b><br/><code>hash = SHA-256(parent_hash, calibrated_pixel_arrays, mask)</code>"]
+        N6["<b>Node 6: Cross-Sensor Contradiction Arbitration</b><br/><code>hash = SHA-256(parent_hash, optical_sar_agreement, physics_rule)</code>"]
+        N7["<b>Node 7: Evidence Sufficiency Verification</b><br/><code>hash = SHA-256(parent_hash, nyquist_passed, coreg_passed)</code>"]
+        N8["<b>Node 8: Final Grounded Finding & Vector Export</b><br/><code>hash = SHA-256(parent_hash, polygons, hectares, confidence)</code>"]
+
+        N1 -->|"Prior State"| N2
+        N2 -->|"Asset Binding"| N3
+        N3 -->|"Parameter Binding"| N4
+        N4 -->|"Pixel Ingestion"| N5
+        N5 -->|"Sensor Cross-Check"| N6
+        N6 -->|"Barrier Validation"| N7
+        N7 -->|"Cryptographic Seal"| N8
+    end
 ```
 
 ### Integrity Guarantee:
@@ -96,7 +104,52 @@ If any downstream parameter or finding is altered, the cryptographic chain hash 
 
 ---
 
-## 4. Public API Interface
+## 4. Multi-Sensor Grounding & Cross-Modal Arbitration Flow
+
+When optical and microwave sensors evaluate the same geographic scene under non-ideal weather conditions, SatQuery AI resolves contradictions through physical wave mechanics rather than statistical guessing:
+
+```mermaid
+flowchart TD
+    subgraph Sensing ["1. Multi-Sensor Remote Sensing Ingestion"]
+        OptFeed["🛰️ Optical Imagery (Sentinel-2)<br/>Surface Reflectance (B02, B03, B04, B08, B11, B12)"]
+        SARFeed["📡 Microwave Radar (Sentinel-1)<br/>C-Band (5.405 GHz) Dual-Pol (VV + VH Backscatter)"]
+    end
+
+    subgraph ConditionChecks ["2. Physical Environmental Analysis"]
+        CloudDetect{"Cloud / Haze / Shadow Present<br/>in Optical Spectral Bands?"}
+        DielectricEval{"Calibrated Radar Backscatter<br/>σ° < -18.0 dB (Specular Water)?"}
+        DoubleBounce{"High Orthogonal Return<br/>σ° > -6.0 dB (Corner Double-Bounce)?"}
+    end
+
+    subgraph ArbitrationMatrix ["3. Deterministic Wave Propagation Physics Rules"]
+        RuleCloudWater["Rule 1: All-Weather Flood / Lake Primacy<br/><i>Microwave C-band penetrates clouds; confirms standing water</i>"]
+        RuleUrban["Rule 3: Urban Structure Corroboration<br/><i>Vertical building walls reflect double-bounce radar pulse</i>"]
+        RuleOpticalAgreement["Rule 0: Full Spectral & Radar Concordance<br/><i>Optical NDWI ≥ 0.15 corroborated by SAR σ° < -18 dB</i>"]
+    end
+
+    subgraph VerdictState ["4. Synthesis & Grounded Verdict"]
+        HighConfidenceWater["✅ Multi-Sensor Verified Water Mask<br/>(Confidence: High | Optical-SAR Corroborated)"]
+        AllWeatherWater["✅ All-Weather Grounded Water Mask<br/>(Confidence: Calibrated | SAR Cloud-Penetrating Primacy)"]
+        BuiltUpVector["✅ Verified Built-Up Infrastructure Polygon<br/>(Confidence: Calibrated | Structural Radar Return)"]
+    end
+
+    OptFeed --> CloudDetect
+    SARFeed --> DielectricEval & DoubleBounce
+
+    CloudDetect -- "Clear Sky (No Clouds)" --> RuleOpticalAgreement
+    CloudDetect -- "Heavy Cloud Cover" --> DielectricEval
+
+    DielectricEval -- "Yes (σ° < -18 dB)" --> RuleCloudWater
+    DoubleBounce -- "Yes (σ° > -6 dB)" --> RuleUrban
+
+    RuleOpticalAgreement --> HighConfidenceWater
+    RuleCloudWater --> AllWeatherWater
+    RuleUrban --> BuiltUpVector
+```
+
+---
+
+## 5. Public API Interface
 
 The system exposes a clean REST API compliant with OpenAPI 3.1:
 - `POST /api/frontier/investigate-geotiff`: Executes real-time physical investigation on uploaded or cataloged GeoTIFFs.
