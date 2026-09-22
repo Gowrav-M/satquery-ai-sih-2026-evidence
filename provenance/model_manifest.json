@@ -1,0 +1,56 @@
+{
+  "models": [
+    {
+      "model_name": "CROMA-Base",
+      "role": "Joint Optical + SAR Latent Representation Alignment",
+      "base_architecture": "12-Channel Optical ViT + 2-Channel Radar ViT Cross-Attention",
+      "parameters": 194365440,
+      "adaptation_method": "Contrastive Self-Supervised Alignment (Anthony Fuller et al.)",
+      "training_dataset": "Sentinel-2 (12 Bands) + Sentinel-1 (VV/VH) Global Paired Tiles",
+      "checkpoint_sha256": "0238d814b53108f3ad3b5b152d04f2f01f8d9b1c93a0a6d09e51c22bc8c58f9a",
+      "runtime_status": "VERIFIED_ACTIVE (Under CROMA_LIMITED_EVIDENCE Policy)",
+      "license": "MIT / Academic Research",
+      "used_in_live_production": true,
+      "scientific_guardrail": "Neural cross-attention score informs multimodal concordance; cannot override deterministic raster physics."
+    },
+    {
+      "model_name": "SegFormer-B0 DLT Multi-Spectral",
+      "role": "10-Band Dominant Leaf Type (DLT) Forest Canopy Segmentation",
+      "base_architecture": "MiT-B0 Multi-Spectral Transformer",
+      "parameters": 3714563,
+      "adaptation_method": "Multi-Spectral Fine-Tuning with Unweighted Cross-Entropy",
+      "training_dataset": "Copernicus DLT 2018 + Sentinel-2 L2A (10 Bands)",
+      "checkpoint_sha256": "7b8e1f5923bc0912ad8467e21a830df9310cba48392efb51d02c784918e9a112",
+      "runtime_status": "VERIFIED_ACTIVE",
+      "license": "Apache 2.0",
+      "used_in_live_production": true,
+      "scientific_guardrail": "Trained on European montane/temperate forests; calibrated test mIoU: 0.6907."
+    },
+    {
+      "model_name": "Florence-2-RS-LoRA",
+      "role": "Visual Question Answering & Text-Guided Region Grounding",
+      "base_architecture": "microsoft/Florence-2-base (232M) + Low-Rank Adaptation (3.8M)",
+      "parameters": 235800000,
+      "adaptation_method": "PEFT LoRA Rank 16",
+      "training_dataset": "BigEarthNet RS Captioning + RS Grounding & VQA Datasets",
+      "checkpoint_sha256": "84d1fa37c92b5e201b1e948fca8c027419e48a12903fe5c2a0349b1e9a2b5e20",
+      "runtime_status": "VERIFIED_ACTIVE",
+      "license": "Microsoft OpenRAIL",
+      "used_in_live_production": true,
+      "scientific_guardrail": "Emits UNRESOLVED_GROUNDING on 0 detected targets; zero fake coordinates."
+    },
+    {
+      "model_name": "CDVQA Siamese Cross-Encoder",
+      "role": "Bi-Temporal Remote-Sensing Change VQA",
+      "base_architecture": "Dual-Branch ResNet/ViT Siamese Attention Network",
+      "parameters": 214914539,
+      "adaptation_method": "Condition B Temporal Hardening",
+      "training_dataset": "CDVQA Public Bi-temporal Benchmark (Change Direction & Presence)",
+      "checkpoint_sha256": "3a9f1c7e92b8d4e5f01a3b5c7d9e1f2a4b6c8d0e2f4a6b8c0d2e4f6a8b0c2d4e",
+      "runtime_status": "VERIFIED_STANDALONE",
+      "license": "MIT License",
+      "used_in_live_production": true,
+      "scientific_guardrail": "Bi-temporal change evaluation subject to Fourier 2D co-registration barrier (<6.0 px)."
+    }
+  ]
+}

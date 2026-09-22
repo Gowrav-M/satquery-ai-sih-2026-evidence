@@ -1,0 +1,3172 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "SatQuery AI \u2014 Scientific Earth Observation Investigation API (Public Contract)",
+    "description": "Sanitized public interface specification for SIH 2026 PS 26167. Internal implementations, credentials, and proprietary routes are omitted.",
+    "version": "0.1.0"
+  },
+  "servers": [
+    {
+      "url": "http://127.0.0.1:8000",
+      "description": "Local deployment / internal evaluation environment"
+    }
+  ],
+  "paths": {
+    "/api/health": {
+      "get": {
+        "summary": "Health Check",
+        "operationId": "health_check_api_health_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "additionalProperties": true,
+                  "type": "object",
+                  "title": "Response Health Check Api Health Get"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/scenarios/sample": {
+      "get": {
+        "summary": "Get Sample Scenarios",
+        "description": "Returns authentic Earth Observation scenarios from the demo corpus.",
+        "operationId": "get_sample_scenarios_api_scenarios_sample_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "additionalProperties": true,
+                  "type": "object",
+                  "title": "Response Get Sample Scenarios Api Scenarios Sample Get"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/sample-scenarios": {
+      "get": {
+        "summary": "Get Sample Scenarios",
+        "description": "Returns authentic Earth Observation scenarios from the demo corpus.",
+        "operationId": "get_sample_scenarios_api_sample_scenarios_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "additionalProperties": true,
+                  "type": "object",
+                  "title": "Response Get Sample Scenarios Api Sample Scenarios Get"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/query": {
+      "post": {
+        "summary": "Create Investigation",
+        "description": "POST /api/investigations (and alias /api/query):\nExecutes an end-to-end investigation with observable execution trace and evidence graph.",
+        "operationId": "create_investigation_api_query_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/QueryRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/InvestigationState"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/investigations": {
+      "post": {
+        "summary": "Create Investigation",
+        "description": "POST /api/investigations (and alias /api/query):\nExecutes an end-to-end investigation with observable execution trace and evidence graph.",
+        "operationId": "create_investigation_api_investigations_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/QueryRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/InvestigationState"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/state/{session_id}": {
+      "get": {
+        "summary": "Get Investigation",
+        "description": "GET /api/investigations/{id} (and alias /api/state/{id}):\nRetrieves the complete investigation state for a given session.",
+        "operationId": "get_investigation_api_state__session_id__get",
+        "parameters": [
+          {
+            "name": "session_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Session Id"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/InvestigationState"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/investigations/{session_id}": {
+      "get": {
+        "summary": "Get Investigation",
+        "description": "GET /api/investigations/{id} (and alias /api/state/{id}):\nRetrieves the complete investigation state for a given session.",
+        "operationId": "get_investigation_api_investigations__session_id__get",
+        "parameters": [
+          {
+            "name": "session_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Session Id"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/InvestigationState"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/investigations/{session_id}/trace": {
+      "get": {
+        "summary": "Get Investigation Trace",
+        "description": "GET /api/investigations/{id}/trace:\nReturns the observable execution trace timeline without private chain-of-thought tokens.",
+        "operationId": "get_investigation_trace_api_investigations__session_id__trace_get",
+        "parameters": [
+          {
+            "name": "session_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Session Id"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "additionalProperties": true,
+                  "title": "Response Get Investigation Trace Api Investigations  Session Id  Trace Get"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/investigations/{session_id}/evidence": {
+      "get": {
+        "summary": "Get Investigation Evidence",
+        "description": "GET /api/investigations/{id}/evidence:\nReturns the structured evidence graph nodes, edges, and provenance trail.",
+        "operationId": "get_investigation_evidence_api_investigations__session_id__evidence_get",
+        "parameters": [
+          {
+            "name": "session_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Session Id"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "additionalProperties": true,
+                  "title": "Response Get Investigation Evidence Api Investigations  Session Id  Evidence Get"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/report/{session_id}": {
+      "get": {
+        "summary": "Download Investigation Report",
+        "description": "GET /api/investigations/{id}/report (and alias /api/report/{id}):\nDownloads the formal investigation dossier as standalone HTML or structured JSON.",
+        "operationId": "download_investigation_report_api_report__session_id__get",
+        "parameters": [
+          {
+            "name": "session_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Session Id"
+            }
+          },
+          {
+            "name": "format",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "default": "html",
+              "title": "Format"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/investigations/{session_id}/report": {
+      "get": {
+        "summary": "Download Investigation Report",
+        "description": "GET /api/investigations/{id}/report (and alias /api/report/{id}):\nDownloads the formal investigation dossier as standalone HTML or structured JSON.",
+        "operationId": "download_investigation_report_api_investigations__session_id__report_get",
+        "parameters": [
+          {
+            "name": "session_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Session Id"
+            }
+          },
+          {
+            "name": "format",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "default": "html",
+              "title": "Format"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/upload": {
+      "post": {
+        "summary": "Upload Geotiff",
+        "operationId": "upload_geotiff_api_upload_post",
+        "requestBody": {
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "$ref": "#/components/schemas/Body_upload_geotiff_api_upload_post"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "additionalProperties": true,
+                  "type": "object",
+                  "title": "Response Upload Geotiff Api Upload Post"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/validate": {
+      "post": {
+        "summary": "Validate Configuration",
+        "operationId": "validate_configuration_api_validate_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ValidateRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CompatibilityReport"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/preview/{filename}": {
+      "get": {
+        "summary": "Get Preview Image",
+        "operationId": "get_preview_image_api_preview__filename__get",
+        "parameters": [
+          {
+            "name": "filename",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Filename"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/frontier/health": {
+      "get": {
+        "summary": "Get Frontier Health",
+        "operationId": "get_frontier_health_api_frontier_health_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "additionalProperties": true,
+                  "type": "object",
+                  "title": "Response Get Frontier Health Api Frontier Health Get"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/frontier/providers": {
+      "get": {
+        "summary": "Get Providers Telemetry",
+        "operationId": "get_providers_telemetry_api_frontier_providers_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "additionalProperties": true,
+                  "type": "object",
+                  "title": "Response Get Providers Telemetry Api Frontier Providers Get"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/frontier/providers/verify": {
+      "post": {
+        "summary": "Verify Providers",
+        "operationId": "verify_providers_api_frontier_providers_verify_post",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "additionalProperties": true,
+                  "type": "object",
+                  "title": "Response Verify Providers Api Frontier Providers Verify Post"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/frontier/scenarios": {
+      "get": {
+        "summary": "Get Demonstration Scenarios",
+        "description": "Returns the authoritative Grand-Final demonstration scenarios.",
+        "operationId": "get_demonstration_scenarios_api_frontier_scenarios_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "additionalProperties": true,
+                  "type": "object",
+                  "title": "Response Get Demonstration Scenarios Api Frontier Scenarios Get"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/frontier/investigations/run": {
+      "post": {
+        "summary": "Run Investigation Scenario",
+        "description": "Executes a full 10-step investigation across real providers and GeoTIFFs.",
+        "operationId": "run_investigation_scenario_api_frontier_investigations_run_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RunScenarioRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "additionalProperties": true,
+                  "type": "object",
+                  "title": "Response Run Investigation Scenario Api Frontier Investigations Run Post"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/frontier/investigations/{investigation_id}": {
+      "get": {
+        "summary": "Get Investigation State",
+        "description": "Retrieves authoritative memory and checkpoints for an active investigation.",
+        "operationId": "get_investigation_state_api_frontier_investigations__investigation_id__get",
+        "parameters": [
+          {
+            "name": "investigation_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Investigation Id"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "additionalProperties": true,
+                  "title": "Response Get Investigation State Api Frontier Investigations  Investigation Id  Get"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/frontier/query": {
+      "post": {
+        "summary": "Submit User Query",
+        "description": "Handles dynamic user follow-ups, queries, or 'Why?' questions.",
+        "operationId": "submit_user_query_api_frontier_query_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UserQueryRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "additionalProperties": true,
+                  "type": "object",
+                  "title": "Response Submit User Query Api Frontier Query Post"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/frontier/fork": {
+      "post": {
+        "summary": "Fork Investigation",
+        "description": "Forks an investigation from an authoritative step without mutating parent branch.",
+        "operationId": "fork_investigation_api_frontier_fork_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ForkInvestigationRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "additionalProperties": true,
+                  "type": "object",
+                  "title": "Response Fork Investigation Api Frontier Fork Post"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/frontier/replay/{investigation_id}": {
+      "get": {
+        "summary": "Replay Investigation",
+        "description": "Returns read-only trajectory from cryptographically sealed checkpoints.",
+        "operationId": "replay_investigation_api_frontier_replay__investigation_id__get",
+        "parameters": [
+          {
+            "name": "investigation_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Investigation Id"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "additionalProperties": true,
+                  "title": "Response Replay Investigation Api Frontier Replay  Investigation Id  Get"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/frontier/explain": {
+      "post": {
+        "summary": "Explain Investigation",
+        "description": "Answers 'Why this sensor?', 'Why rejected?', 'What would change your mind?'.",
+        "operationId": "explain_investigation_api_frontier_explain_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ExplainRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "additionalProperties": true,
+                  "type": "object",
+                  "title": "Response Explain Investigation Api Frontier Explain Post"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/frontier/upload-scene": {
+      "post": {
+        "summary": "Upload And Ingest Scene",
+        "description": "Accepts any new, unseen GeoTIFF file.\nValidates CRS, GSD, bands, transform, and generates preview without filename shortcuts.",
+        "operationId": "upload_and_ingest_scene_api_frontier_upload_scene_post",
+        "requestBody": {
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "$ref": "#/components/schemas/Body_upload_and_ingest_scene_api_frontier_upload_scene_post"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "additionalProperties": true,
+                  "type": "object",
+                  "title": "Response Upload And Ingest Scene Api Frontier Upload Scene Post"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/frontier/inspect-raster": {
+      "post": {
+        "summary": "Inspect Raster",
+        "description": "Accepts any local GeoTIFF file path.\nValidates CRS, GSD, bands, transform, and generates preview without copying.\nAlso computes deterministic spectral reflectance profile.",
+        "operationId": "inspect_raster_api_frontier_inspect_raster_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/InspectRasterRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "additionalProperties": true,
+                  "type": "object",
+                  "title": "Response Inspect Raster Api Frontier Inspect Raster Post"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/frontier/spectral-profile": {
+      "post": {
+        "summary": "Get Spectral Profile",
+        "description": "Computes physical BOA surface reflectance profile and indices from raw GeoTIFF.",
+        "operationId": "get_spectral_profile_api_frontier_spectral_profile_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SpectralProfileRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "additionalProperties": true,
+                  "type": "object",
+                  "title": "Response Get Spectral Profile Api Frontier Spectral Profile Post"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/frontier/temporal-comparison": {
+      "post": {
+        "summary": "Get Temporal Comparison",
+        "description": "Computes joint dual-epoch spectral curves and index metrics across all band configurations.",
+        "operationId": "get_temporal_comparison_api_frontier_temporal_comparison_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/TemporalComparisonRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "additionalProperties": true,
+                  "type": "object",
+                  "title": "Response Get Temporal Comparison Api Frontier Temporal Comparison Post"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/frontier/investigate-geotiff": {
+      "post": {
+        "summary": "Investigate Geotiff",
+        "description": "Executes authoritative scientific investigation on real GeoTIFF rasters.\nDerives all parameters directly from raster pixels with zero mock leakage.",
+        "operationId": "investigate_geotiff_api_frontier_investigate_geotiff_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/InvestigateGeoTIFFRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "additionalProperties": true,
+                  "type": "object",
+                  "title": "Response Investigate Geotiff Api Frontier Investigate Geotiff Post"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/frontier/inspect-point": {
+      "post": {
+        "summary": "Inspect Point",
+        "description": "Samples pixel spectra and local context at clicked (lat, lon) on active rasters.\nReturns immediate, persona-adapted ground-truth explanation.",
+        "operationId": "inspect_point_api_frontier_inspect_point_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/InspectPointRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "additionalProperties": true,
+                  "type": "object",
+                  "title": "Response Inspect Point Api Frontier Inspect Point Post"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/frontier/suggest-queries": {
+      "post": {
+        "summary": "Suggest Queries",
+        "description": "Dynamically generates 3-4 context-aware questions for the active scene(s)\nusing the Primary Agent Brain (NVIDIA Nemotron 550B).",
+        "operationId": "suggest_queries_api_frontier_suggest_queries_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SuggestQueriesRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "additionalProperties": true,
+                  "type": "object",
+                  "title": "Response Suggest Queries Api Frontier Suggest Queries Post"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/frontier/memory/search": {
+      "get": {
+        "summary": "Search Memory",
+        "description": "Retrieves relevant historical investigation cases and known limitation memories.",
+        "operationId": "search_memory_api_frontier_memory_search_get",
+        "parameters": [
+          {
+            "name": "q",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "Query string to search memory",
+              "default": "",
+              "title": "Q"
+            },
+            "description": "Query string to search memory"
+          },
+          {
+            "name": "sensor",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "description": "Sensor filter",
+              "title": "Sensor"
+            },
+            "description": "Sensor filter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "additionalProperties": true,
+                  "title": "Response Search Memory Api Frontier Memory Search Get"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/frontier/memory/replay/{case_id}": {
+      "get": {
+        "summary": "Replay Memory Case",
+        "description": "Cryptographically replays an investigation case directly from scientific memory.",
+        "operationId": "replay_memory_case_api_frontier_memory_replay__case_id__get",
+        "parameters": [
+          {
+            "name": "case_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Case Id"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "additionalProperties": true,
+                  "title": "Response Replay Memory Case Api Frontier Memory Replay  Case Id  Get"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/frontier/memory/cases": {
+      "get": {
+        "summary": "List Memory Cases",
+        "description": "Lists all stored scientific investigation cases in memory.",
+        "operationId": "list_memory_cases_api_frontier_memory_cases_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "additionalProperties": true,
+                  "type": "object",
+                  "title": "Response List Memory Cases Api Frontier Memory Cases Get"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/frontier/investigations/{investigation_id}/report": {
+      "get": {
+        "summary": "Get Investigation Report",
+        "description": "Returns downloadable peer-review-grade scientific investigation report in PDF, Markdown, or JSON.",
+        "operationId": "get_investigation_report_api_frontier_investigations__investigation_id__report_get",
+        "parameters": [
+          {
+            "name": "investigation_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Investigation Id"
+            }
+          },
+          {
+            "name": "format",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "Report format: pdf, markdown, or json",
+              "default": "pdf",
+              "title": "Format"
+            },
+            "description": "Report format: pdf, markdown, or json"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "title": "Response Get Investigation Report Api Frontier Investigations  Investigation Id  Report Get"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/frontier/investigations/{investigation_id}/download/{artifact_type}": {
+      "get": {
+        "summary": "Download Artifact",
+        "description": "Downloads real GeoJSON or report artifacts from the current investigation.",
+        "operationId": "download_artifact_api_frontier_investigations__investigation_id__download__artifact_type__get",
+        "parameters": [
+          {
+            "name": "investigation_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Investigation Id"
+            }
+          },
+          {
+            "name": "artifact_type",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Artifact Type"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "title": "Response Download Artifact Api Frontier Investigations  Investigation Id  Download  Artifact Type  Get"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/frontier/sample-pixel": {
+      "post": {
+        "summary": "Sample Pixel",
+        "description": "Samples raw and normalized multi-band pixel vector at coordinates (pixel_x, pixel_y).",
+        "operationId": "sample_pixel_api_frontier_sample_pixel_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SamplePixelRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "additionalProperties": true,
+                  "type": "object",
+                  "title": "Response Sample Pixel Api Frontier Sample Pixel Post"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/frontier/voice/transcribe": {
+      "post": {
+        "tags": [
+          "voice"
+        ],
+        "summary": "Transcribe Voice",
+        "description": "Receives recorded microphone audio, transcribes via Sarvam STT,\nand returns normalized user text for the primary agent.",
+        "operationId": "transcribe_voice_api_frontier_voice_transcribe_post",
+        "requestBody": {
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "$ref": "#/components/schemas/Body_transcribe_voice_api_frontier_voice_transcribe_post"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "additionalProperties": true,
+                  "type": "object",
+                  "title": "Response Transcribe Voice Api Frontier Voice Transcribe Post"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/frontier/voice/synthesize": {
+      "post": {
+        "tags": [
+          "voice"
+        ],
+        "summary": "Synthesize Speech",
+        "description": "Synthesizes the primary agent's final natural-language answer into speech audio.",
+        "operationId": "synthesize_speech_api_frontier_voice_synthesize_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SynthesizeSpeechRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "additionalProperties": true,
+                  "type": "object",
+                  "title": "Response Synthesize Speech Api Frontier Voice Synthesize Post"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/demo-corpus/manifest": {
+      "get": {
+        "summary": "Get Demo Corpus Manifest",
+        "operationId": "get_demo_corpus_manifest_api_demo_corpus_manifest_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          }
+        }
+      }
+    },
+    "/": {
+      "get": {
+        "summary": "Root",
+        "operationId": "root__get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Body_transcribe_voice_api_frontier_voice_transcribe_post": {
+        "properties": {
+          "file": {
+            "type": "string",
+            "contentMediaType": "application/octet-stream",
+            "title": "File"
+          },
+          "language_code": {
+            "type": "string",
+            "title": "Language Code",
+            "default": "unknown"
+          }
+        },
+        "type": "object",
+        "required": [
+          "file"
+        ],
+        "title": "Body_transcribe_voice_api_frontier_voice_transcribe_post"
+      },
+      "Body_upload_and_ingest_scene_api_frontier_upload_scene_post": {
+        "properties": {
+          "file": {
+            "type": "string",
+            "contentMediaType": "application/octet-stream",
+            "title": "File"
+          }
+        },
+        "type": "object",
+        "required": [
+          "file"
+        ],
+        "title": "Body_upload_and_ingest_scene_api_frontier_upload_scene_post"
+      },
+      "Body_upload_geotiff_api_upload_post": {
+        "properties": {
+          "file": {
+            "type": "string",
+            "contentMediaType": "application/octet-stream",
+            "title": "File"
+          },
+          "role": {
+            "$ref": "#/components/schemas/ImageRole",
+            "default": "SINGLE"
+          }
+        },
+        "type": "object",
+        "required": [
+          "file"
+        ],
+        "title": "Body_upload_geotiff_api_upload_post"
+      },
+      "CompatibilityReport": {
+        "properties": {
+          "status": {
+            "$ref": "#/components/schemas/ValidationStatus"
+          },
+          "is_compatible": {
+            "type": "boolean",
+            "title": "Is Compatible"
+          },
+          "spatial_overlap_percent": {
+            "type": "number",
+            "title": "Spatial Overlap Percent"
+          },
+          "crs_match": {
+            "type": "boolean",
+            "title": "Crs Match"
+          },
+          "resolution_ratio": {
+            "type": "number",
+            "title": "Resolution Ratio"
+          },
+          "temporal_order_valid": {
+            "anyOf": [
+              {
+                "type": "boolean"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Temporal Order Valid"
+          },
+          "messages": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Messages"
+          },
+          "recommended_actions": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Recommended Actions"
+          }
+        },
+        "type": "object",
+        "required": [
+          "status",
+          "is_compatible",
+          "spatial_overlap_percent",
+          "crs_match",
+          "resolution_ratio"
+        ],
+        "title": "CompatibilityReport"
+      },
+      "EvidenceEdge": {
+        "properties": {
+          "source": {
+            "type": "string",
+            "title": "Source"
+          },
+          "target": {
+            "type": "string",
+            "title": "Target"
+          },
+          "relation": {
+            "$ref": "#/components/schemas/EvidenceEdgeType"
+          },
+          "properties": {
+            "additionalProperties": true,
+            "type": "object",
+            "title": "Properties"
+          },
+          "timestamp": {
+            "type": "string",
+            "title": "Timestamp"
+          }
+        },
+        "type": "object",
+        "required": [
+          "source",
+          "target",
+          "relation"
+        ],
+        "title": "EvidenceEdge"
+      },
+      "EvidenceEdgeType": {
+        "type": "string",
+        "enum": [
+          "derived_from",
+          "supports",
+          "contradicts",
+          "verified_by",
+          "temporal_relation",
+          "spatial_relation",
+          "generated_by"
+        ],
+        "title": "EvidenceEdgeType"
+      },
+      "EvidenceFirstAnswer": {
+        "properties": {
+          "question": {
+            "type": "string",
+            "title": "Question"
+          },
+          "interpreted_task": {
+            "$ref": "#/components/schemas/TaskType"
+          },
+          "answer": {
+            "type": "string",
+            "title": "Answer"
+          },
+          "answer_type": {
+            "type": "string",
+            "title": "Answer Type",
+            "default": "other"
+          },
+          "evidence_sources": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Evidence Sources"
+          },
+          "specialist_models_used": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Specialist Models Used"
+          },
+          "spatial_evidence": {
+            "anyOf": [
+              {
+                "additionalProperties": true,
+                "type": "object"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Spatial Evidence"
+          },
+          "supporting_metrics": {
+            "additionalProperties": true,
+            "type": "object",
+            "title": "Supporting Metrics"
+          },
+          "uncertainty": {
+            "type": "string",
+            "title": "Uncertainty",
+            "default": "Uncalibrated VLM confidence nullified. Physical and spatial metrics derived deterministically."
+          },
+          "limitations": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Limitations"
+          },
+          "verification_status": {
+            "$ref": "#/components/schemas/VerificationStatus",
+            "default": "AGREED"
+          },
+          "is_abstention": {
+            "type": "boolean",
+            "title": "Is Abstention",
+            "default": false
+          },
+          "abstention_reason": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Abstention Reason"
+          }
+        },
+        "type": "object",
+        "required": [
+          "question",
+          "interpreted_task",
+          "answer"
+        ],
+        "title": "EvidenceFirstAnswer"
+      },
+      "EvidenceGraph": {
+        "properties": {
+          "nodes": {
+            "additionalProperties": {
+              "$ref": "#/components/schemas/EvidenceNode"
+            },
+            "type": "object",
+            "title": "Nodes"
+          },
+          "edges": {
+            "items": {
+              "$ref": "#/components/schemas/EvidenceEdge"
+            },
+            "type": "array",
+            "title": "Edges"
+          }
+        },
+        "type": "object",
+        "title": "EvidenceGraph"
+      },
+      "EvidenceItem": {
+        "properties": {
+          "evidence_id": {
+            "type": "string",
+            "title": "Evidence Id"
+          },
+          "modality": {
+            "$ref": "#/components/schemas/SensorModality"
+          },
+          "source_layer": {
+            "type": "string",
+            "title": "Source Layer"
+          },
+          "description": {
+            "type": "string",
+            "title": "Description"
+          },
+          "confidence": {
+            "anyOf": [
+              {
+                "type": "number",
+                "maximum": 1.0,
+                "minimum": 0.0
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Confidence"
+          },
+          "spatial_mask_url": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Spatial Mask Url"
+          },
+          "geojson_features": {
+            "anyOf": [
+              {
+                "additionalProperties": true,
+                "type": "object"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Geojson Features"
+          },
+          "metrics": {
+            "additionalProperties": true,
+            "type": "object",
+            "title": "Metrics"
+          },
+          "evidence_type": {
+            "type": "string",
+            "title": "Evidence Type",
+            "default": "GENERIC_EVIDENCE"
+          },
+          "status": {
+            "type": "string",
+            "title": "Status",
+            "default": "SUCCESS"
+          }
+        },
+        "type": "object",
+        "required": [
+          "modality",
+          "source_layer",
+          "description"
+        ],
+        "title": "EvidenceItem"
+      },
+      "EvidenceNode": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "title": "Id"
+          },
+          "type": {
+            "$ref": "#/components/schemas/EvidenceNodeType"
+          },
+          "label": {
+            "type": "string",
+            "title": "Label"
+          },
+          "properties": {
+            "additionalProperties": true,
+            "type": "object",
+            "title": "Properties"
+          },
+          "confidence": {
+            "anyOf": [
+              {
+                "type": "number",
+                "maximum": 1.0,
+                "minimum": 0.0
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Confidence"
+          },
+          "timestamp": {
+            "type": "string",
+            "title": "Timestamp"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "type",
+          "label"
+        ],
+        "title": "EvidenceNode"
+      },
+      "EvidenceNodeType": {
+        "type": "string",
+        "enum": [
+          "USER_QUERY",
+          "INPUT_IMAGE",
+          "DERIVED_LAYER",
+          "MODEL_RESULT",
+          "OBJECT",
+          "CHANGE",
+          "CLAIM",
+          "VERIFICATION",
+          "REPORT"
+        ],
+        "title": "EvidenceNodeType"
+      },
+      "ExplainRequest": {
+        "properties": {
+          "investigation_id": {
+            "type": "string",
+            "title": "Investigation Id"
+          },
+          "question": {
+            "type": "string",
+            "title": "Question"
+          }
+        },
+        "type": "object",
+        "required": [
+          "investigation_id",
+          "question"
+        ],
+        "title": "ExplainRequest"
+      },
+      "ForkInvestigationRequest": {
+        "properties": {
+          "investigation_id": {
+            "type": "string",
+            "title": "Investigation Id"
+          },
+          "from_step": {
+            "type": "integer",
+            "title": "From Step"
+          },
+          "fork_reason": {
+            "type": "string",
+            "title": "Fork Reason"
+          }
+        },
+        "type": "object",
+        "required": [
+          "investigation_id",
+          "from_step",
+          "fork_reason"
+        ],
+        "title": "ForkInvestigationRequest"
+      },
+      "GeoBounds": {
+        "properties": {
+          "min_x": {
+            "type": "number",
+            "title": "Min X",
+            "description": "Westernmost longitude or X coordinate"
+          },
+          "min_y": {
+            "type": "number",
+            "title": "Min Y",
+            "description": "Southernmost latitude or Y coordinate"
+          },
+          "max_x": {
+            "type": "number",
+            "title": "Max X",
+            "description": "Easternmost longitude or X coordinate"
+          },
+          "max_y": {
+            "type": "number",
+            "title": "Max Y",
+            "description": "Northernmost latitude or Y coordinate"
+          },
+          "crs": {
+            "type": "string",
+            "title": "Crs",
+            "description": "EPSG code or WKT string, e.g. 'EPSG:4326'"
+          }
+        },
+        "type": "object",
+        "required": [
+          "min_x",
+          "min_y",
+          "max_x",
+          "max_y",
+          "crs"
+        ],
+        "title": "GeoBounds"
+      },
+      "HTTPValidationError": {
+        "properties": {
+          "detail": {
+            "items": {
+              "$ref": "#/components/schemas/ValidationError"
+            },
+            "type": "array",
+            "title": "Detail"
+          }
+        },
+        "type": "object",
+        "title": "HTTPValidationError"
+      },
+      "ImageMetadata": {
+        "properties": {
+          "image_id": {
+            "type": "string",
+            "title": "Image Id"
+          },
+          "file_path": {
+            "type": "string",
+            "title": "File Path"
+          },
+          "role": {
+            "$ref": "#/components/schemas/ImageRole",
+            "default": "SINGLE"
+          },
+          "modality": {
+            "$ref": "#/components/schemas/SensorModality"
+          },
+          "width": {
+            "type": "integer",
+            "title": "Width"
+          },
+          "height": {
+            "type": "integer",
+            "title": "Height"
+          },
+          "band_count": {
+            "type": "integer",
+            "title": "Band Count"
+          },
+          "band_names": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Band Names"
+          },
+          "dtype": {
+            "type": "string",
+            "title": "Dtype"
+          },
+          "crs": {
+            "type": "string",
+            "title": "Crs"
+          },
+          "geotransform": {
+            "items": {
+              "type": "number"
+            },
+            "type": "array",
+            "title": "Geotransform"
+          },
+          "resolution_m": {
+            "type": "number",
+            "title": "Resolution M"
+          },
+          "bounds": {
+            "$ref": "#/components/schemas/GeoBounds"
+          },
+          "nodata_value": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Nodata Value"
+          },
+          "acquisition_date": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Acquisition Date"
+          },
+          "sensor_name": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Sensor Name"
+          },
+          "band_statistics": {
+            "anyOf": [
+              {
+                "additionalProperties": {
+                  "additionalProperties": {
+                    "type": "number"
+                  },
+                  "type": "object"
+                },
+                "type": "object"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Band Statistics"
+          }
+        },
+        "type": "object",
+        "required": [
+          "image_id",
+          "file_path",
+          "modality",
+          "width",
+          "height",
+          "band_count",
+          "band_names",
+          "dtype",
+          "crs",
+          "geotransform",
+          "resolution_m",
+          "bounds"
+        ],
+        "title": "ImageMetadata"
+      },
+      "ImageRole": {
+        "type": "string",
+        "enum": [
+          "SINGLE",
+          "T1_PRE",
+          "T2_POST",
+          "OPTICAL_REF",
+          "SAR_COMP"
+        ],
+        "title": "ImageRole"
+      },
+      "InspectPointRequest": {
+        "properties": {
+          "lat": {
+            "type": "number",
+            "title": "Lat"
+          },
+          "lon": {
+            "type": "number",
+            "title": "Lon"
+          },
+          "raster_paths": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Raster Paths"
+          },
+          "persona": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Persona",
+            "default": "SCIENTIST"
+          }
+        },
+        "type": "object",
+        "required": [
+          "lat",
+          "lon",
+          "raster_paths"
+        ],
+        "title": "InspectPointRequest"
+      },
+      "InspectRasterRequest": {
+        "properties": {
+          "file_path": {
+            "type": "string",
+            "title": "File Path"
+          }
+        },
+        "type": "object",
+        "required": [
+          "file_path"
+        ],
+        "title": "InspectRasterRequest"
+      },
+      "InvestigateGeoTIFFRequest": {
+        "properties": {
+          "query": {
+            "type": "string",
+            "title": "Query"
+          },
+          "raster_paths": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Raster Paths"
+          },
+          "target_object_size_m": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Target Object Size M"
+          },
+          "preferred_provider": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Preferred Provider"
+          },
+          "enable_adaptive_replan": {
+            "type": "boolean",
+            "title": "Enable Adaptive Replan",
+            "default": false
+          },
+          "persona": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Persona",
+            "default": "SCIENTIST"
+          }
+        },
+        "type": "object",
+        "required": [
+          "query",
+          "raster_paths"
+        ],
+        "title": "InvestigateGeoTIFFRequest"
+      },
+      "InvestigationPlan": {
+        "properties": {
+          "goal": {
+            "type": "string",
+            "title": "Goal"
+          },
+          "task_type": {
+            "$ref": "#/components/schemas/TaskType"
+          },
+          "steps": {
+            "items": {
+              "$ref": "#/components/schemas/PlanStep"
+            },
+            "type": "array",
+            "title": "Steps"
+          },
+          "created_at": {
+            "type": "string",
+            "title": "Created At"
+          }
+        },
+        "type": "object",
+        "required": [
+          "goal",
+          "task_type"
+        ],
+        "title": "InvestigationPlan"
+      },
+      "InvestigationState": {
+        "properties": {
+          "session_id": {
+            "type": "string",
+            "title": "Session Id"
+          },
+          "created_at": {
+            "type": "string",
+            "title": "Created At"
+          },
+          "updated_at": {
+            "type": "string",
+            "title": "Updated At"
+          },
+          "query": {
+            "type": "string",
+            "title": "Query",
+            "default": ""
+          },
+          "interpreted_intent": {
+            "type": "string",
+            "title": "Interpreted Intent",
+            "default": ""
+          },
+          "query_interpretation": {
+            "anyOf": [
+              {
+                "additionalProperties": true,
+                "type": "object"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Query Interpretation"
+          },
+          "target_class": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Target Class"
+          },
+          "aoi_geometry": {
+            "anyOf": [
+              {
+                "additionalProperties": true,
+                "type": "object"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Aoi Geometry"
+          },
+          "images": {
+            "items": {
+              "$ref": "#/components/schemas/ImageMetadata"
+            },
+            "type": "array",
+            "title": "Images"
+          },
+          "sensors": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Sensors"
+          },
+          "dates": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Dates"
+          },
+          "crs_list": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Crs List"
+          },
+          "resolutions": {
+            "items": {
+              "type": "number"
+            },
+            "type": "array",
+            "title": "Resolutions"
+          },
+          "modalities": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Modalities"
+          },
+          "relationships": {
+            "items": {
+              "additionalProperties": true,
+              "type": "object"
+            },
+            "type": "array",
+            "title": "Relationships"
+          },
+          "derived_layers": {
+            "items": {
+              "additionalProperties": true,
+              "type": "object"
+            },
+            "type": "array",
+            "title": "Derived Layers"
+          },
+          "objects": {
+            "items": {
+              "additionalProperties": true,
+              "type": "object"
+            },
+            "type": "array",
+            "title": "Objects"
+          },
+          "changes": {
+            "items": {
+              "additionalProperties": true,
+              "type": "object"
+            },
+            "type": "array",
+            "title": "Changes"
+          },
+          "validation": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/CompatibilityReport"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "plan": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/InvestigationPlan"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "observable_trace": {
+            "items": {
+              "$ref": "#/components/schemas/ObservableExecutionStep"
+            },
+            "type": "array",
+            "title": "Observable Trace"
+          },
+          "specialist_outputs": {
+            "items": {
+              "$ref": "#/components/schemas/SpecialistOutput"
+            },
+            "type": "array",
+            "title": "Specialist Outputs"
+          },
+          "verification": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/VerificationResult"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "evidence_graph": {
+            "$ref": "#/components/schemas/EvidenceGraph"
+          },
+          "final_answer": {
+            "type": "string",
+            "title": "Final Answer",
+            "default": ""
+          },
+          "overall_confidence": {
+            "type": "number",
+            "title": "Overall Confidence",
+            "default": 0.0
+          },
+          "confidence_breakdown": {
+            "additionalProperties": {
+              "type": "number"
+            },
+            "type": "object",
+            "title": "Confidence Breakdown"
+          },
+          "limitations": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Limitations"
+          },
+          "provenance_graph": {
+            "items": {
+              "$ref": "#/components/schemas/ProvenanceNode"
+            },
+            "type": "array",
+            "title": "Provenance Graph"
+          },
+          "geojson_result": {
+            "anyOf": [
+              {
+                "additionalProperties": true,
+                "type": "object"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Geojson Result"
+          },
+          "evidence_first_answer": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/EvidenceFirstAnswer"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          }
+        },
+        "type": "object",
+        "title": "InvestigationState"
+      },
+      "ObservableExecutionStep": {
+        "properties": {
+          "step_id": {
+            "type": "string",
+            "title": "Step Id"
+          },
+          "timestamp": {
+            "type": "string",
+            "title": "Timestamp"
+          },
+          "specialist": {
+            "type": "string",
+            "title": "Specialist"
+          },
+          "action_description": {
+            "type": "string",
+            "title": "Action Description"
+          },
+          "input_references": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Input References"
+          },
+          "parameters": {
+            "additionalProperties": true,
+            "type": "object",
+            "title": "Parameters"
+          },
+          "status": {
+            "type": "string",
+            "title": "Status",
+            "default": "PENDING"
+          },
+          "duration_sec": {
+            "type": "number",
+            "title": "Duration Sec",
+            "default": 0.0
+          },
+          "output_summary": {
+            "type": "string",
+            "title": "Output Summary",
+            "default": ""
+          },
+          "confidence": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Confidence"
+          },
+          "error": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Error"
+          }
+        },
+        "type": "object",
+        "required": [
+          "step_id",
+          "specialist",
+          "action_description"
+        ],
+        "title": "ObservableExecutionStep"
+      },
+      "PlanStep": {
+        "properties": {
+          "step_id": {
+            "type": "string",
+            "title": "Step Id"
+          },
+          "tool": {
+            "type": "string",
+            "title": "Tool"
+          },
+          "reason": {
+            "type": "string",
+            "title": "Reason"
+          },
+          "inputs": {
+            "additionalProperties": true,
+            "type": "object",
+            "title": "Inputs"
+          },
+          "input_references": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Input References"
+          },
+          "expected_output": {
+            "type": "string",
+            "title": "Expected Output",
+            "default": ""
+          },
+          "dependency": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Dependency"
+          },
+          "confidence_impact": {
+            "type": "string",
+            "title": "Confidence Impact",
+            "default": "DIRECT"
+          },
+          "verification_requirement": {
+            "type": "boolean",
+            "title": "Verification Requirement",
+            "default": false
+          },
+          "status": {
+            "$ref": "#/components/schemas/PlanStepStatus",
+            "default": "PENDING"
+          },
+          "duration_sec": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Duration Sec"
+          }
+        },
+        "type": "object",
+        "required": [
+          "step_id",
+          "tool",
+          "reason"
+        ],
+        "title": "PlanStep"
+      },
+      "PlanStepStatus": {
+        "type": "string",
+        "enum": [
+          "PENDING",
+          "RUNNING",
+          "COMPLETED",
+          "FAILED",
+          "SKIPPED"
+        ],
+        "title": "PlanStepStatus"
+      },
+      "ProvenanceNode": {
+        "properties": {
+          "node_id": {
+            "type": "string",
+            "title": "Node Id"
+          },
+          "node_type": {
+            "type": "string",
+            "title": "Node Type"
+          },
+          "label": {
+            "type": "string",
+            "title": "Label"
+          },
+          "parameters": {
+            "additionalProperties": true,
+            "type": "object",
+            "title": "Parameters"
+          },
+          "parent_ids": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Parent Ids"
+          },
+          "timestamp": {
+            "type": "string",
+            "title": "Timestamp"
+          }
+        },
+        "type": "object",
+        "required": [
+          "node_id",
+          "node_type",
+          "label"
+        ],
+        "title": "ProvenanceNode"
+      },
+      "QueryRequest": {
+        "properties": {
+          "query": {
+            "type": "string",
+            "title": "Query"
+          },
+          "images": {
+            "items": {
+              "$ref": "#/components/schemas/ImageMetadata"
+            },
+            "type": "array",
+            "title": "Images"
+          },
+          "session_id": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Session Id"
+          }
+        },
+        "type": "object",
+        "required": [
+          "query",
+          "images"
+        ],
+        "title": "QueryRequest"
+      },
+      "RunScenarioRequest": {
+        "properties": {
+          "scenario_id": {
+            "type": "string",
+            "title": "Scenario Id"
+          },
+          "preferred_provider": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Preferred Provider"
+          }
+        },
+        "type": "object",
+        "required": [
+          "scenario_id"
+        ],
+        "title": "RunScenarioRequest"
+      },
+      "SamplePixelRequest": {
+        "properties": {
+          "raster_path": {
+            "type": "string",
+            "title": "Raster Path"
+          },
+          "pixel_x": {
+            "type": "integer",
+            "title": "Pixel X"
+          },
+          "pixel_y": {
+            "type": "integer",
+            "title": "Pixel Y"
+          }
+        },
+        "type": "object",
+        "required": [
+          "raster_path",
+          "pixel_x",
+          "pixel_y"
+        ],
+        "title": "SamplePixelRequest"
+      },
+      "SensorModality": {
+        "type": "string",
+        "enum": [
+          "OPTICAL",
+          "MULTISPECTRAL",
+          "SAR",
+          "HYPERSPECTRAL"
+        ],
+        "title": "SensorModality"
+      },
+      "SpecialistOutput": {
+        "properties": {
+          "specialist_name": {
+            "type": "string",
+            "title": "Specialist Name"
+          },
+          "task_type": {
+            "$ref": "#/components/schemas/TaskType"
+          },
+          "status": {
+            "type": "string",
+            "title": "Status"
+          },
+          "answer": {
+            "type": "string",
+            "title": "Answer"
+          },
+          "confidence": {
+            "anyOf": [
+              {
+                "type": "number",
+                "maximum": 1.0,
+                "minimum": 0.0
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Confidence"
+          },
+          "evidence": {
+            "items": {
+              "$ref": "#/components/schemas/EvidenceItem"
+            },
+            "type": "array",
+            "title": "Evidence"
+          },
+          "execution_time_sec": {
+            "type": "number",
+            "title": "Execution Time Sec",
+            "default": 0.0
+          }
+        },
+        "type": "object",
+        "required": [
+          "specialist_name",
+          "task_type",
+          "status",
+          "answer"
+        ],
+        "title": "SpecialistOutput"
+      },
+      "SpectralProfileRequest": {
+        "properties": {
+          "raster_path": {
+            "type": "string",
+            "title": "Raster Path"
+          }
+        },
+        "type": "object",
+        "required": [
+          "raster_path"
+        ],
+        "title": "SpectralProfileRequest"
+      },
+      "SuggestQueriesRequest": {
+        "properties": {
+          "raster_paths": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Raster Paths"
+          },
+          "persona": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Persona",
+            "default": "SCIENTIST"
+          },
+          "preferred_provider": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Preferred Provider",
+            "default": "AGENTROUTER"
+          }
+        },
+        "type": "object",
+        "required": [
+          "raster_paths"
+        ],
+        "title": "SuggestQueriesRequest"
+      },
+      "SynthesizeSpeechRequest": {
+        "properties": {
+          "text": {
+            "type": "string",
+            "title": "Text"
+          },
+          "target_language": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Target Language"
+          },
+          "target_language_code": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Target Language Code"
+          },
+          "speaker": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Speaker"
+          }
+        },
+        "type": "object",
+        "required": [
+          "text"
+        ],
+        "title": "SynthesizeSpeechRequest"
+      },
+      "TaskType": {
+        "type": "string",
+        "enum": [
+          "VQA",
+          "CAPTIONING",
+          "GROUNDING",
+          "SEGMENTATION",
+          "CHANGE_DETECTION",
+          "CHANGE_VQA",
+          "OPTICAL_SAR_FUSION",
+          "MEASUREMENT",
+          "GEO_QUERY",
+          "COUNTING",
+          "ABSTENTION"
+        ],
+        "title": "TaskType"
+      },
+      "TemporalComparisonRequest": {
+        "properties": {
+          "t1_path": {
+            "type": "string",
+            "title": "T1 Path"
+          },
+          "t2_path": {
+            "type": "string",
+            "title": "T2 Path"
+          }
+        },
+        "type": "object",
+        "required": [
+          "t1_path",
+          "t2_path"
+        ],
+        "title": "TemporalComparisonRequest"
+      },
+      "UserQueryRequest": {
+        "properties": {
+          "investigation_id": {
+            "type": "string",
+            "title": "Investigation Id"
+          },
+          "user_utterance": {
+            "type": "string",
+            "title": "User Utterance"
+          },
+          "source_language": {
+            "type": "string",
+            "title": "Source Language",
+            "default": "en"
+          }
+        },
+        "type": "object",
+        "required": [
+          "investigation_id",
+          "user_utterance"
+        ],
+        "title": "UserQueryRequest"
+      },
+      "ValidateRequest": {
+        "properties": {
+          "task_type": {
+            "$ref": "#/components/schemas/TaskType"
+          },
+          "images": {
+            "items": {
+              "$ref": "#/components/schemas/ImageMetadata"
+            },
+            "type": "array",
+            "title": "Images"
+          }
+        },
+        "type": "object",
+        "required": [
+          "task_type",
+          "images"
+        ],
+        "title": "ValidateRequest"
+      },
+      "ValidationError": {
+        "properties": {
+          "loc": {
+            "items": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "integer"
+                }
+              ]
+            },
+            "type": "array",
+            "title": "Location"
+          },
+          "msg": {
+            "type": "string",
+            "title": "Message"
+          },
+          "type": {
+            "type": "string",
+            "title": "Error Type"
+          },
+          "input": {
+            "title": "Input"
+          },
+          "ctx": {
+            "type": "object",
+            "title": "Context"
+          }
+        },
+        "type": "object",
+        "required": [
+          "loc",
+          "msg",
+          "type"
+        ],
+        "title": "ValidationError"
+      },
+      "ValidationStatus": {
+        "type": "string",
+        "enum": [
+          "VALID",
+          "WARNING",
+          "INVALID"
+        ],
+        "title": "ValidationStatus"
+      },
+      "VerificationResult": {
+        "properties": {
+          "status": {
+            "$ref": "#/components/schemas/VerificationStatus"
+          },
+          "calibrated_confidence": {
+            "type": "number",
+            "maximum": 1.0,
+            "minimum": 0.0,
+            "title": "Calibrated Confidence"
+          },
+          "cross_modal_agreement_score": {
+            "type": "number",
+            "maximum": 1.0,
+            "minimum": 0.0,
+            "title": "Cross Modal Agreement Score"
+          },
+          "spatial_consistency_score": {
+            "type": "number",
+            "maximum": 1.0,
+            "minimum": 0.0,
+            "title": "Spatial Consistency Score"
+          },
+          "conflicts_detected": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Conflicts Detected"
+          },
+          "verification_notes": {
+            "type": "string",
+            "title": "Verification Notes"
+          }
+        },
+        "type": "object",
+        "required": [
+          "status",
+          "calibrated_confidence",
+          "cross_modal_agreement_score",
+          "spatial_consistency_score",
+          "verification_notes"
+        ],
+        "title": "VerificationResult"
+      },
+      "VerificationStatus": {
+        "type": "string",
+        "enum": [
+          "AGREED",
+          "PARTIAL_AGREEMENT",
+          "CONFLICT",
+          "INSUFFICIENT_EVIDENCE"
+        ],
+        "title": "VerificationStatus"
+      }
+    }
+  },
+  "servers": [
+    {
+      "url": "https://api.satquery.internal",
+      "description": "Internal Production Cluster"
+    }
+  ]
+}

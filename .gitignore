@@ -1,0 +1,15 @@
+# Environment and Secrets
+*.env
+*.env.*
+*.key
+*.pem
+*.token
+
+# Python & Temporary Files
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.log
+.DS_Store
+Thumbs.db

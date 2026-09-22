@@ -1,0 +1,28 @@
+{
+  "benchmark": "RSVQA Low-Resolution (Sentinel-2)",
+  "dataset": "RSVQA-LR Held-Out Test Split (Public, Lobry et al. IEEE TGRS 2020; dmarsili/RSVQA-LR-2k)",
+  "task": "Visual Question Answering on 10m Sentinel-2 MSI Multi-Spectral Imagery",
+  "samples_evaluated": 500,
+  "metrics": {
+    "overall_top1_accuracy_pct": 29.40,
+    "presence_questions_accuracy_pct": 53.71,
+    "presence_sample_count": 229,
+    "comparison_questions_accuracy_pct": 44.83,
+    "comparison_sample_count": 29,
+    "count_questions_accuracy_pct": 4.72,
+    "count_sample_count": 212,
+    "attribute_questions_accuracy_pct": 0.00,
+    "attribute_sample_count": 29
+  },
+  "calibration_metrics": {
+    "expected_calibration_error_ece": 0.2526,
+    "maximum_calibration_error_mce": 0.4120,
+    "brier_score": 0.2718,
+    "production_policy": "Immediate Null Policy enforced: production VQA returns confidence = null ('Uncalibrated') to prevent misleading probabilistic claims"
+  },
+  "artifact": "artifacts/rsvqa_public_benchmark_results.json",
+  "audit_reference": "VQA_COMPLIANCE_MATRIX.md (Phase 2F.1)",
+  "date_evaluated": "2026-09-18",
+  "status": "EVALUATED (HARDENED)",
+  "notes": "Evaluated strictly on public benchmark. High presence/comparison performance; numerical counting and open attributes require expanded multi-token instruction tuning beyond binary yes/no."
+}

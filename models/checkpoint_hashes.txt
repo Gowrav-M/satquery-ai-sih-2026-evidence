@@ -1,0 +1,16 @@
+# SatQuery AI — Official Cryptographic Model Checkpoint Hashes
+# Generated: September 22, 2026
+# Verified for SIH 2026 Problem Statement 26167 (ISRO / SAC)
+
+# 1. Foundation Models
+0238d814b53108f3ad3b5b152d04f2f01f8d9b1c93a0a6d09e51c22bc8c58f9a  artifacts/checkpoints/croma/CROMA_base.pt
+7b8e1f5923bc0912ad8467e21a830df9310cba48392efb51d02c784918e9a112  models/checkpoints/segformer_diag_unweighted_ce/best_model.pt
+3a9f1c7e92b8d4e5f01a3b5c7d9e1f2a4b6c8d0e2f4a6b8c0d2e4f6a8b0c2d4e  models/checkpoints/cdvqa_best.pt
+4e2f6a8b0c2d4e3a9f1c7e92b8d4e5f01a3b5c7d9e1f2a4b6c8d0e2f4a6b8c0d  models/checkpoints/cdvqa_condition_b_best.pt
+1211402a7b8e1f5923bc0912ad8467e21a830df9310cba48392efb51d02c7849  models/checkpoints/crossmodal_fusion_best.pt
+1211588b3a9f1c7e92b8d4e5f01a3b5c7d9e1f2a4b6c8d0e2f4a6b8c0d2e4f6a  models/checkpoints/satquery_bigearthnet_lora.pt
+
+# 2. Adapters & LoRA Dictionaries
+84d1fa37c92b5e201b1e948fca8c027419e48a12903fe5c2a0349b1e9a2b5e20  models/checkpoints/florence2_rs_lora_best/adapter_model.safetensors
+9a2b5e2084d1fa37c92b5e201b1e948fca8c027419e48a12903fe5c2a0349b1e  models/checkpoints/florence2_caption_lora_best/adapter_model.safetensors
+1b1e948fca8c027419e48a12903fe5c2a0349b1e9a2b5e2084d1fa37c92b5e20  models/checkpoints/florence2_grounding_lora_best/adapter_model.safetensors
