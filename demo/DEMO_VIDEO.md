@@ -4,7 +4,7 @@
 
 ---
 
-## 🎥 Demonstration Video Link
+## Demonstration Video Link
 
 > **Official SIH Demo Video:**  
 > **[Watch the 6-Minute Demonstration on YouTube (Unlisted)](https://youtu.be/YOUR_UNLISTED_VIDEO_ID)**  
@@ -12,7 +12,7 @@
 
 ---
 
-## ⏱️ Video Chapter Timestamps
+## Video Chapter Timestamps
 
 | Timestamp | Chapter Title | Key Demonstration Focus |
 | :--- | :--- | :--- |

@@ -81,7 +81,7 @@ The entire physical verification flow is summarized in this deterministic decisi
 
 ```mermaid
 flowchart TD
-    subgraph Gatekeeper ["🛡️ Scientific Gatekeeper Verification Pipeline"]
+    subgraph Gatekeeper ["Scientific Gatekeeper Verification Pipeline"]
         direction TB
         
         subgraph Stage1 ["Stage 1: Spatial Nyquist Resolution Barrier"]
@@ -89,8 +89,8 @@ flowchart TD
             Sensor_GSD["Sensor Ground Sample Distance: GSD (10m)"]
             NyquistCalc["Nyquist Lower Bound: L_min = 2 × GSD = 20.0m"]
             CheckNyquist{"Is Target D < 20.0m?"}
-            AbstainNyquist["🛑 TERMINATE: PHYSICALLY_UNRESOLVABLE<br/>(Abstains to prevent sub-pixel hallucination)"]
-            PassNyquist["✅ Resolution Approved (D ≥ 20.0m)"]
+            AbstainNyquist["TERMINATE: PHYSICALLY_UNRESOLVABLE<br/>(Abstains to prevent sub-pixel hallucination)"]
+            PassNyquist["Resolution Approved (D ≥ 20.0m)"]
             
             Q_Target & Sensor_GSD --> NyquistCalc --> CheckNyquist
             CheckNyquist -- "Yes (D < 20m)" --> AbstainNyquist
@@ -101,8 +101,8 @@ flowchart TD
             RastersT1T2["Epoch T1 & T2 Registered Rasters"]
             Fourier2D["2D Fourier Phase Cross-Correlation R(u,v)"]
             CheckShift{"Displacement Δr > 6.0 pixels?"}
-            AbstainCoReg["🛑 SUPPRESS: CHANGE_DETECTION_HALTED<br/>(Prevents boundary disparity artifacts)"]
-            PassCoReg["✅ Sub-Pixel Co-Registration Confirmed"]
+            AbstainCoReg["SUPPRESS: CHANGE_DETECTION_HALTED<br/>(Prevents boundary disparity artifacts)"]
+            PassCoReg["Sub-Pixel Co-Registration Confirmed"]
 
             RastersT1T2 --> Fourier2D --> CheckShift
             CheckShift -- "Yes (Δr > 6.0 px)" --> AbstainCoReg
@@ -114,8 +114,8 @@ flowchart TD
             SARSpec["SAR: Specular Attenuation (σ° < -18 dB)"]
             SARDouble["SAR: Double-Bounce Return (σ° > -6 dB)"]
             
-            ArbWater["🌊 Surface Water Grounded<br/>(Microwave C-Band Cloud Penetration Primacy)"]
-            ArbUrban["🏙️ Vertical Urban Structure Grounded<br/>(Radar Double-Bounce Corroboration)"]
+            ArbWater["Surface Water Grounded<br/>(Microwave C-Band Cloud Penetration Primacy)"]
+            ArbUrban["Vertical Urban Structure Grounded<br/>(Radar Double-Bounce Corroboration)"]
 
             OptCloud & SARSpec --> ArbWater
             OptCloud & SARDouble --> ArbUrban

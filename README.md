@@ -32,26 +32,26 @@ General-purpose Large Language Models (LLMs) and consumer Vision-Language Models
 ```mermaid
 flowchart TD
     subgraph Ingestion ["1. Multi-Sensor Input Ingestion"]
-        Q["💬 User Query & Geo-Rasters<br/>(Natural Language / Voice / Coordinates)"]
+        Q["User Query & Geo-Rasters<br/>(Natural Language / Voice / Coordinates)"]
     end
 
     subgraph Reasoning ["2. Agentic Reasoning Core"]
-        Intent["📝 Intent Interpretation<br/>(Query intent extraction & parameter assignment)"]
-        Validation["📋 Observation Validation<br/>(Resolution check, Nyquist barrier 2× GSD, CRS bounds)"]
+        Intent["Intent Interpretation<br/>(Query intent extraction & parameter assignment)"]
+        Validation["Observation Validation<br/>(Resolution check, Nyquist barrier 2× GSD, CRS bounds)"]
     end
 
     subgraph Execution ["3. Deterministic Physics & Specialists"]
-        Dispatch["⚙️ Specialist Dispatch<br/>(NDWI, NDVI, NDBI, SAR calibration, change differencing)"]
-        Measure["📐 Empirical Measurement<br/>(Geodesic area in hectares/acres, vector polygons)"]
+        Dispatch["Specialist Dispatch<br/>(NDWI, NDVI, NDBI, SAR calibration, change differencing)"]
+        Measure["Empirical Measurement<br/>(Geodesic area in hectares/acres, vector polygons)"]
     end
 
     subgraph TrustLayer ["4. Trust Verification & Provenance"]
-        DAG["⛓️ Evidence Graph (DAG)<br/>(8-stage immutable ledger with SHA-256 integrity)"]
-        Gatekeeper["🛡️ Scientific Gatekeeper<br/>(Cross-sensor contradiction arbitration, microwave primacy)"]
+        DAG["Evidence Graph (DAG)<br/>(8-stage immutable ledger with SHA-256 integrity)"]
+        Gatekeeper["Scientific Gatekeeper<br/>(Cross-sensor contradiction arbitration, microwave primacy)"]
     end
 
     subgraph Delivery ["5. Verified Output Presentation"]
-        Finding["✅ Structured Grounded Finding<br/>(Executive summary card + collapsible radiometric proof)"]
+        Finding["Structured Grounded Finding<br/>(Executive summary card + collapsible radiometric proof)"]
     end
 
     Q --> Intent
@@ -73,44 +73,44 @@ SatQuery AI consists of four modular layers decoupled between perception and det
 
 ```mermaid
 flowchart TD
-    subgraph Tier1 ["🖥️ Tier 1: Interaction & Localization Layer"]
-        T1_UI["🗺️ Leaflet WebGL Map Console<br/>(Interactive Vector Overlays)"]
-        T1_Curtain["🪟 Split-Curtain Swipe<br/>(Optical vs. SAR Inspector)"]
-        T1_Persona["👥 3-Way Persona Switcher<br/>(Farmer / District Collector / Scientist)"]
-        T1_Probe["🎯 Real-Time Pixel Probe<br/>(Raw DN & Calibrated Radiometry)"]
-        T1_Voice["🎙️ Indic Multilingual Voice Engine<br/>(Sarvam AI API Integration)"]
+    subgraph Tier1 ["Tier 1: Interaction & Localization Layer"]
+        T1_UI["Leaflet WebGL Map Console<br/>(Interactive Vector Overlays)"]
+        T1_Curtain["Split-Curtain Swipe<br/>(Optical vs. SAR Inspector)"]
+        T1_Persona["3-Way Persona Switcher<br/>(Farmer / District Collector / Scientist)"]
+        T1_Probe["Real-Time Pixel Probe<br/>(Raw DN & Calibrated Radiometry)"]
+        T1_Voice["Indic Multilingual Voice Engine<br/>(Sarvam AI API Integration)"]
     end
 
-    subgraph Tier2 ["🧠 Tier 2: Agentic Orchestration Brain"]
-        T2_AST["📝 Query Intent Parser & AST<br/>(Spatial & Temporal Extractor)"]
-        T2_Contract["📋 Observation Contract Validator<br/>(CRS, Bounds & Resolution Check)"]
-        T2_Hypo["⚖️ Competing Hypotheses Ledger<br/>(Priors, Null & Target Hypotheses)"]
-        T2_Planner["🧭 VOE Next-Action Planner<br/>(Value of Evidence Optimization)"]
+    subgraph Tier2 ["Tier 2: Agentic Orchestration Brain"]
+        T2_AST["Query Intent Parser & AST<br/>(Spatial & Temporal Extractor)"]
+        T2_Contract["Observation Contract Validator<br/>(CRS, Bounds & Resolution Check)"]
+        T2_Hypo["Competing Hypotheses Ledger<br/>(Priors, Null & Target Hypotheses)"]
+        T2_Planner["VOE Next-Action Planner<br/>(Value of Evidence Optimization)"]
     end
 
-    subgraph Tier3 ["⚙️ Tier 3: Specialist & Foundation Foundry"]
+    subgraph Tier3 ["Tier 3: Specialist & Foundation Foundry"]
         subgraph Sensors ["Satellite Rasters Ingested"]
-            S_Opt["🛰️ Sentinel-2 MSI Optical<br/>(10m BOA Reflectance B02–B12)"]
-            S_SAR["📡 Sentinel-1 C-SAR Radar<br/>(10m GRD Dual-Pol VV/VH)"]
-            S_Temp["⏱️ Bi-Temporal Observation Pair<br/>(Epoch T1 vs. Epoch T2)"]
+            S_Opt["Sentinel-2 MSI Optical<br/>(10m BOA Reflectance B02–B12)"]
+            S_SAR["Sentinel-1 C-SAR Radar<br/>(10m GRD Dual-Pol VV/VH)"]
+            S_Temp["Bi-Temporal Observation Pair<br/>(Epoch T1 vs. Epoch T2)"]
         end
 
         subgraph Engines ["Domain Specialist Engines"]
-            E_GIS["📐 PhysicalGISEngine<br/>(Deterministic NDWI / NDVI / NDBI)"]
-            E_SAR["🌊 SensorAwareSARProcessor<br/>(Lee 5x5 Filter & dB Calibration)"]
-            E_CROMA["🔬 CROMA-Base Joint Embedder<br/>(194.3M Optical-Radar Latent)"]
-            E_Seg["🌲 SegFormer-B0 Specialist<br/>(10-Band Canopy Segmentation)"]
-            E_Ground["🎯 Florence-2-RS-LoRA<br/>(Spatial Bounding Box Grounding)"]
-            E_Change["🔄 BiTemporal Specialist<br/>(2D Fourier Phase Shift & Differencing)"]
+            E_GIS["PhysicalGISEngine<br/>(Deterministic NDWI / NDVI / NDBI)"]
+            E_SAR["SensorAwareSARProcessor<br/>(Lee 5x5 Filter & dB Calibration)"]
+            E_CROMA["CROMA-Base Joint Embedder<br/>(194.3M Optical-Radar Latent)"]
+            E_Seg["SegFormer-B0 Specialist<br/>(10-Band Canopy Segmentation)"]
+            E_Ground["Florence-2-RS-LoRA<br/>(Spatial Bounding Box Grounding)"]
+            E_Change["BiTemporal Specialist<br/>(2D Fourier Phase Shift & Differencing)"]
         end
     end
 
-    subgraph Tier4 ["🛡️ Tier 4: Scientific Trust & Provenance"]
-        T4_Nyquist["🛑 Nyquist Epistemic Barrier<br/>(Rejects Targets < 2x GSD)"]
-        T4_CoReg["📐 Fourier Phase Co-Registration<br/>(Misregistration Barrier < 6.0 px)"]
-        T4_Arbiter["⚡ Multi-Sensor Contradiction Arbiter<br/>(Microwave Cloud Penetration)"]
-        T4_DAG["⛓️ 8-Stage Cryptographic DAG<br/>(SHA-256 Immutable Node Hashes)"]
-        T4_Output["✅ Verified Earth Insight Dossier<br/>(GeoJSON, Exact Hectares, PDF/MD)"]
+    subgraph Tier4 ["Tier 4: Scientific Trust & Provenance"]
+        T4_Nyquist["Nyquist Epistemic Barrier<br/>(Rejects Targets < 2x GSD)"]
+        T4_CoReg["Fourier Phase Co-Registration<br/>(Misregistration Barrier < 6.0 px)"]
+        T4_Arbiter["Multi-Sensor Contradiction Arbiter<br/>(Microwave Cloud Penetration)"]
+        T4_DAG["8-Stage Cryptographic DAG<br/>(SHA-256 Immutable Node Hashes)"]
+        T4_Output["Verified Earth Insight Dossier<br/>(GeoJSON, Exact Hectares, PDF/MD)"]
     end
 
     %% Operational Flows

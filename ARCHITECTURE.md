@@ -23,44 +23,44 @@ SatQuery AI is engineered on the principle of **Decoupled Perception and Physics
 
 ```mermaid
 flowchart TD
-    subgraph Tier1 ["🖥️ Tier 1: Interaction & Localization Layer"]
-        T1_UI["🗺️ Leaflet WebGL Map Console<br/>(Interactive Vector Overlays)"]
-        T1_Curtain["🪟 Split-Curtain Swipe<br/>(Optical vs. SAR Inspector)"]
-        T1_Persona["👥 3-Way Persona Switcher<br/>(Farmer / Collector / Scientist)"]
-        T1_Probe["🎯 Real-Time Pixel Probe<br/>(Raw DN & Calibrated Radiometry)"]
-        T1_Voice["🎙️ Indic Multilingual Voice Engine<br/>(Sarvam AI API Integration)"]
+    subgraph Tier1 ["Tier 1: Interaction & Localization Layer"]
+        T1_UI["Leaflet WebGL Map Console<br/>(Interactive Vector Overlays)"]
+        T1_Curtain["Split-Curtain Swipe<br/>(Optical vs. SAR Inspector)"]
+        T1_Persona["3-Way Persona Switcher<br/>(Farmer / Collector / Scientist)"]
+        T1_Probe["Real-Time Pixel Probe<br/>(Raw DN & Calibrated Radiometry)"]
+        T1_Voice["Indic Multilingual Voice Engine<br/>(Sarvam AI API Integration)"]
     end
 
-    subgraph Tier2 ["🧠 Tier 2: Agentic Orchestration Brain"]
-        T2_AST["📝 Query Intent Parser & AST<br/>(Spatial & Temporal Extractor)"]
-        T2_Contract["📋 Observation Contract Validator<br/>(CRS, Bounds & Resolution Check)"]
-        T2_Hypo["⚖️ Competing Hypotheses Ledger<br/>(Priors, Null & Target Hypotheses)"]
-        T2_Planner["🧭 VOE Next-Action Planner<br/>(Value of Evidence Optimization)"]
+    subgraph Tier2 ["Tier 2: Agentic Orchestration Brain"]
+        T2_AST["Query Intent Parser & AST<br/>(Spatial & Temporal Extractor)"]
+        T2_Contract["Observation Contract Validator<br/>(CRS, Bounds & Resolution Check)"]
+        T2_Hypo["Competing Hypotheses Ledger<br/>(Priors, Null & Target Hypotheses)"]
+        T2_Planner["VOE Next-Action Planner<br/>(Value of Evidence Optimization)"]
     end
 
-    subgraph Tier3 ["⚙️ Tier 3: Specialist & Foundation Foundry"]
+    subgraph Tier3 ["Tier 3: Specialist & Foundation Foundry"]
         subgraph Sensors ["Satellite Rasters Ingested"]
-            S_Opt["🛰️ Sentinel-2 MSI Optical<br/>(10m BOA Reflectance B02–B12)"]
-            S_SAR["📡 Sentinel-1 C-SAR Radar<br/>(10m GRD Dual-Pol VV/VH)"]
-            S_Temp["⏱️ Bi-Temporal Observation Pair<br/>(Epoch T1 vs. Epoch T2)"]
+            S_Opt["Sentinel-2 MSI Optical<br/>(10m BOA Reflectance B02–B12)"]
+            S_SAR["Sentinel-1 C-SAR Radar<br/>(10m GRD Dual-Pol VV/VH)"]
+            S_Temp["Bi-Temporal Observation Pair<br/>(Epoch T1 vs. Epoch T2)"]
         end
 
         subgraph Engines ["Domain Specialist Engines"]
-            E_GIS["📐 PhysicalGISEngine<br/>(Deterministic NDWI / NDVI / NDBI)"]
-            E_SAR["🌊 SensorAwareSARProcessor<br/>(Lee 5x5 Filter & dB Calibration)"]
-            E_CROMA["🔬 CROMA-Base Joint Embedder<br/>(194.3M Optical-Radar Latent)"]
-            E_Seg["🌲 SegFormer-B0 Specialist<br/>(10-Band Canopy Segmentation)"]
-            E_Ground["🎯 Florence-2-RS-LoRA<br/>(Spatial Bounding Box Grounding)"]
-            E_Change["🔄 BiTemporal Specialist<br/>(2D Fourier Phase Shift & Differencing)"]
+            E_GIS["PhysicalGISEngine<br/>(Deterministic NDWI / NDVI / NDBI)"]
+            E_SAR["SensorAwareSARProcessor<br/>(Lee 5x5 Filter & dB Calibration)"]
+            E_CROMA["CROMA-Base Joint Embedder<br/>(194.3M Optical-Radar Latent)"]
+            E_Seg["SegFormer-B0 Specialist<br/>(10-Band Canopy Segmentation)"]
+            E_Ground["Florence-2-RS-LoRA<br/>(Spatial Bounding Box Grounding)"]
+            E_Change["BiTemporal Specialist<br/>(2D Fourier Phase Shift & Differencing)"]
         end
     end
 
-    subgraph Tier4 ["🛡️ Tier 4: Scientific Trust & Provenance"]
-        T4_Nyquist["🛑 Nyquist Epistemic Barrier<br/>(Rejects Targets < 2x GSD)"]
-        T4_CoReg["📐 Fourier Phase Co-Registration<br/>(Misregistration Barrier < 6.0 px)"]
-        T4_Arbiter["⚡ Multi-Sensor Contradiction Arbiter<br/>(Microwave Cloud Penetration)"]
-        T4_DAG["⛓️ 8-Stage Cryptographic DAG<br/>(SHA-256 Immutable Node Hashes)"]
-        T4_Output["✅ Verified Earth Insight Dossier<br/>(GeoJSON, Exact Hectares, PDF/MD)"]
+    subgraph Tier4 ["Tier 4: Scientific Trust & Provenance"]
+        T4_Nyquist["Nyquist Epistemic Barrier<br/>(Rejects Targets < 2x GSD)"]
+        T4_CoReg["Fourier Phase Co-Registration<br/>(Misregistration Barrier < 6.0 px)"]
+        T4_Arbiter["Multi-Sensor Contradiction Arbiter<br/>(Microwave Cloud Penetration)"]
+        T4_DAG["8-Stage Cryptographic DAG<br/>(SHA-256 Immutable Node Hashes)"]
+        T4_Output["Verified Earth Insight Dossier<br/>(GeoJSON, Exact Hectares, PDF/MD)"]
     end
 
     %% Inter-Tier Operational Flows
@@ -79,7 +79,7 @@ Every investigation generates an immutable directed acyclic graph where each nod
 
 ```mermaid
 flowchart TD
-    subgraph DAG ["⛓️ 8-Stage Immutable Cryptographic Evidence Graph (DAG)"]
+    subgraph DAG ["8-Stage Immutable Cryptographic Evidence Graph (DAG)"]
         N1["<b>Node 1: User Query & Intent AST</b><br/><code>hash = SHA-256(raw_query, persona, locale)</code>"]
         N2["<b>Node 2: Competing Hypotheses Formulation</b><br/><code>hash = SHA-256(parent_hash, H0_null, H1_target)</code>"]
         N3["<b>Node 3: Satellite Asset Registration</b><br/><code>hash = SHA-256(parent_hash, raster_sha256, crs, gsd)</code>"]
@@ -111,8 +111,8 @@ When optical and microwave sensors evaluate the same geographic scene under non-
 ```mermaid
 flowchart TD
     subgraph Sensing ["1. Multi-Sensor Remote Sensing Ingestion"]
-        OptFeed["🛰️ Optical Imagery (Sentinel-2)<br/>Surface Reflectance (B02, B03, B04, B08, B11, B12)"]
-        SARFeed["📡 Microwave Radar (Sentinel-1)<br/>C-Band (5.405 GHz) Dual-Pol (VV + VH Backscatter)"]
+        OptFeed["Optical Imagery (Sentinel-2)<br/>Surface Reflectance (B02, B03, B04, B08, B11, B12)"]
+        SARFeed["Microwave Radar (Sentinel-1)<br/>C-Band (5.405 GHz) Dual-Pol (VV + VH Backscatter)"]
     end
 
     subgraph ConditionChecks ["2. Physical Environmental Analysis"]
@@ -128,9 +128,9 @@ flowchart TD
     end
 
     subgraph VerdictState ["4. Synthesis & Grounded Verdict"]
-        HighConfidenceWater["✅ Multi-Sensor Verified Water Mask<br/>(Confidence: High | Optical-SAR Corroborated)"]
-        AllWeatherWater["✅ All-Weather Grounded Water Mask<br/>(Confidence: Calibrated | SAR Cloud-Penetrating Primacy)"]
-        BuiltUpVector["✅ Verified Built-Up Infrastructure Polygon<br/>(Confidence: Calibrated | Structural Radar Return)"]
+        HighConfidenceWater["Multi-Sensor Verified Water Mask<br/>(Confidence: High | Optical-SAR Corroborated)"]
+        AllWeatherWater["All-Weather Grounded Water Mask<br/>(Confidence: Calibrated | SAR Cloud-Penetrating Primacy)"]
+        BuiltUpVector["Verified Built-Up Infrastructure Polygon<br/>(Confidence: Calibrated | Structural Radar Return)"]
     end
 
     OptFeed --> CloudDetect
