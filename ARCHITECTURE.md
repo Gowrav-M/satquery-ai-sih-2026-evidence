@@ -1,6 +1,4 @@
-# SatQuery AI — System Architecture & Scientific Dataflow
-## Technical Specification | SIH 2026 Problem Statement 26167 (ISRO / SAC)
-**Team:** STARFORGE  
+# SatQuery AI — System Architecture
 
 ---
 
@@ -17,9 +15,15 @@ SatQuery AI is engineered on the principle of **Decoupled Perception and Physics
    - Evaluate physical barriers (Nyquist spatial resolution, 2D phase co-registration offset).
    - Arbitrate cross-sensor contradictions based on physical wave propagation (e.g. microwave cloud penetration vs optical scattering).
 
+![Agentic Workflow](architecture/agentic_workflow.png)  
+*Figure 1: Agentic workflow overview — query intent analysis leads to an observation contract check, specialist dispatch, deterministic raster processing, and evidence-backed verification.*
+
 ---
 
 ## 2. Four-Tier Architectural Topology
+
+![Four-Tier System Architecture](architecture/system_architecture.png)  
+*Figure 2: End-to-end four-tier system architecture showing user interaction, orchestration, domain specialist engines, and scientific trust verification.*
 
 ```mermaid
 flowchart TD
@@ -71,11 +75,19 @@ flowchart TD
     Tier4 -->|"Cryptographically Verified Polygons & Dossier"| Tier1
 ```
 
+### Specialist Engine Routing
+
+![Specialist Dispatch](architecture/specialist_dispatch.png)  
+*Figure 3: Specialist dispatch routing — matching task types and sensor inputs to the appropriate optical, radar, bi-temporal, or segmentation specialist.*
+
 ---
 
 ## 3. The 8-Stage Cryptographic Evidence Graph (DAG)
 
 Every investigation generates an immutable directed acyclic graph where each node contains the SHA-256 cryptographic digest of its inputs and state:
+
+![8-Stage Evidence Graph](architecture/evidence_graph.png)  
+*Figure 4: 8-stage cryptographic evidence graph tracing execution from query intent through hypothesis generation, asset registration, radiometric computation, and vector export.*
 
 ```mermaid
 flowchart TD
@@ -107,6 +119,9 @@ If any downstream parameter or finding is altered, the cryptographic chain hash 
 ## 4. Multi-Sensor Grounding & Cross-Modal Arbitration Flow
 
 When optical and microwave sensors evaluate the same geographic scene under non-ideal weather conditions, SatQuery AI resolves contradictions through physical wave mechanics rather than statistical guessing:
+
+![Scientific Gatekeeper and Multi-Sensor Arbitration](architecture/scientific_gatekeeper.png)  
+*Figure 5: Scientific gatekeeper logic — arbitrating optical and SAR sensor inputs using physical wave propagation rules (microwave cloud penetration and specular water backscatter).*
 
 ```mermaid
 flowchart TD
@@ -140,7 +155,7 @@ flowchart TD
     CloudDetect -- "Heavy Cloud Cover" --> DielectricEval
 
     DielectricEval -- "Yes (σ° < -18 dB)" --> RuleCloudWater
-    DoubleBounce -- "Yes (σ° > -6 dB)" --> RuleUrban
+    DoubleBounce -- "Yes (σ° > +5 dB)" --> RuleUrban
 
     RuleOpticalAgreement --> HighConfidenceWater
     RuleCloudWater --> AllWeatherWater

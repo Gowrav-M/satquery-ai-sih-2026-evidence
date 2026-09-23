@@ -1,5 +1,4 @@
 # SatQuery AI — Model Adaptation Training & Evaluation Summary
-## SIH 2026 Problem Statement 26167 (ISRO / SAC) | Evidence Dossier
 
 ---
 

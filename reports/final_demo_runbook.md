@@ -1,6 +1,4 @@
-# SatQuery AI — Official Grand-Finale Live Demo Runbook
-## SIH 2026 Problem Statement 26167 (ISRO / SAC) | Final Live Execution Guide
-**Team:** STARFORGE  
+# SatQuery AI — Live Demo Runbook
 **Target Audience:** ISRO / SAC Evaluation Panel, Jury Members  
 
 ---
@@ -19,7 +17,7 @@ flowchart LR
 ---
 
 ### Act 1: The Non-Technical Accessibility Hook (1.5 Minutes)
-- **Goal:** Prove instant accessibility for non-technical stakeholders (farmers, district collectors, relief workers).
+- **Goal:** Demonstrate instant accessibility for non-technical stakeholders (farmers, district collectors, relief workers).
 - **Demonstration:**
   - Open the console and toggle the **`Farmer / Field Operator`** persona.
   - Show technical raster formulas translated into plain-language indicators: **Hectares & Acres of arable land, simple water availability flags, and actionable guidance**.
@@ -66,7 +64,7 @@ flowchart LR
 ---
 
 ### Act 6: 8-Stage Cryptographic Evidence Graph & Audit Export (1.5 Minutes)
-- **Goal:** Prove complete reproducibility and auditable accountability.
+- **Goal:** Demonstrate end-to-end reproducibility and auditable accountability.
 - **Demonstration:**
   - Inspect the 8-stage Directed Acyclic Graph (DAG) in the right-hand panel.
   - Show SHA-256 cryptographic node signatures linking Query $\to$ Hypotheses $\to$ Asset $\to$ Measurement $\to$ Finding.

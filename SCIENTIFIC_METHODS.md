@@ -1,6 +1,4 @@
-# SatQuery AI — Scientific Methods & Physical Formulations
-## Mathematical Rigor | SIH 2026 Problem Statement 26167 (ISRO / SAC)
-**Team:** STARFORGE  
+# SatQuery AI — Scientific Methods
 
 ---
 
@@ -112,7 +110,7 @@ flowchart TD
         subgraph Stage3 ["Stage 3: Cross-Sensor Wave Physics Arbitration"]
             OptCloud["Optical: Cloud / Haze Obscuration"]
             SARSpec["SAR: Specular Attenuation (σ° < -18 dB)"]
-            SARDouble["SAR: Double-Bounce Return (σ° > -6 dB)"]
+            SARDouble["SAR: Double-Bounce Return (σ° > +5 dB)"]
             
             ArbWater["Surface Water Grounded<br/>(Microwave C-Band Cloud Penetration Primacy)"]
             ArbUrban["Vertical Urban Structure Grounded<br/>(Radar Double-Bounce Corroboration)"]

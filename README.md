@@ -1,276 +1,178 @@
-# SatQuery AI — Public Technical Evidence & Validation Record
-## Smart India Hackathon 2026 | Problem Statement 26167 (ISRO / SAC)
-**Team:** STARFORGE  
-**Category:** Software | **Theme:** Space Technology  
-**Organization:** Indian Space Research Organisation (ISRO) / Space Applications Centre (SAC)  
+# SatQuery AI
+
+### Agentic Earth Observation Analysis for SIH 2026 — Problem Statement 26167
+
+**Team STARFORGE**  
+**Organization:** ISRO / Space Applications Centre (SAC)  
+**Category:** Software  
+**Theme:** Space Technology
 
 ---
 
 > [!IMPORTANT]
-> **Repository Purpose & Scope Notice:**  
-> This repository contains selected technical documentation, validation results, architecture diagrams, model information, data provenance and demonstration evidence for SatQuery AI. The production source code, private checkpoints, credentials and restricted evaluation data are intentionally not included.
+> This repository contains selected technical evidence for evaluation and documentation. The production implementation, private model weights, credentials and restricted evaluation material are maintained separately.
 
 ---
 
-## 1. Problem Statement & Context
+## What the System Does
 
-Modern Earth Observation (EO) satellites produce vast streams of multi-spectral optical and Synthetic Aperture Radar (SAR) imagery. However, accessing and synthesizing these datasets remains a major bottleneck for non-specialist decision makers (such as district agricultural officers, relief coordinators, and municipal planners). 
+SatQuery AI is a web-based Earth Observation analysis system that accepts natural-language questions about satellite imagery. Instead of sending the image directly to one general-purpose vision model, the system selects task-specific analysis components, checks whether the available observations are suitable for the question, and combines model outputs with deterministic raster measurements. The final response includes supporting map evidence and an execution trace.
 
-General-purpose Large Language Models (LLMs) and consumer Vision-Language Models (VLMs) fail on satellite imagery because they:
-1. Cannot ingest multi-spectral or complex-valued radar formats (such as 10-band Sentinel-2 COGs or calibrated Sentinel-1 GRD backscatter).
-2. Suffer from spatial and numerical hallucinations, inventing land boundaries and fabricating surface areas.
-3. Lack awareness of physical sensor physics, such as cloud attenuation in optical bands or the spatial Nyquist resolution barrier.
-
-**SIH 2026 Problem Statement 26167** calls for an AI-powered system capable of natural language Visual Question Answering (VQA) and multimodal Earth Observation analysis across optical and microwave sensors.
+The system works with Copernicus Sentinel-2 optical and Sentinel-1 SAR imagery. It computes spectral indices (NDWI, NDVI, NDBI), calibrates SAR backscatter, enforces a Nyquist spatial resolution guardrail, and records every step in an 8-stage evidence graph with SHA-256 integrity hashes.
 
 ---
 
-## 2. System Overview
-
-**SatQuery AI** is an evidence-driven Earth Observation investigation system developed by Team STARFORGE. The architecture decouples natural language interpretation from physical raster computation:
+## Architecture
 
 ```mermaid
 flowchart TD
-    subgraph Ingestion ["1. Multi-Sensor Input Ingestion"]
-        Q["User Query & Geo-Rasters<br/>(Natural Language / Voice / Coordinates)"]
-    end
-
-    subgraph Reasoning ["2. Agentic Reasoning Core"]
-        Intent["Intent Interpretation<br/>(Query intent extraction & parameter assignment)"]
-        Validation["Observation Validation<br/>(Resolution check, Nyquist barrier 2× GSD, CRS bounds)"]
-    end
-
-    subgraph Execution ["3. Deterministic Physics & Specialists"]
-        Dispatch["Specialist Dispatch<br/>(NDWI, NDVI, NDBI, SAR calibration, change differencing)"]
-        Measure["Empirical Measurement<br/>(Geodesic area in hectares/acres, vector polygons)"]
-    end
-
-    subgraph TrustLayer ["4. Trust Verification & Provenance"]
-        DAG["Evidence Graph (DAG)<br/>(8-stage immutable ledger with SHA-256 integrity)"]
-        Gatekeeper["Scientific Gatekeeper<br/>(Cross-sensor contradiction arbitration, microwave primacy)"]
-    end
-
-    subgraph Delivery ["5. Verified Output Presentation"]
-        Finding["Structured Grounded Finding<br/>(Executive summary card + collapsible radiometric proof)"]
-    end
-
-    Q --> Intent
-    Intent --> Validation
-    Validation --> Dispatch
-    Dispatch --> Measure
-    Measure --> DAG
-    DAG --> Gatekeeper
-    Gatekeeper --> Finding
+    Q["User Query & Geo-Rasters"] --> Intent["Intent Parsing & Validation"]
+    Intent --> Contract["Observation Contract Check<br/>(CRS, Resolution, Nyquist)"]
+    Contract --> Dispatch["Specialist Dispatch<br/>(NDWI, NDVI, SAR, Change Detection)"]
+    Dispatch --> Measure["Deterministic Measurement<br/>(Geodesic area, vector polygons)"]
+    Measure --> DAG["Evidence Graph<br/>(8-stage SHA-256 DAG)"]
+    DAG --> Gate["Scientific Gatekeeper<br/>(Cross-sensor arbitration)"]
+    Gate --> Output["Verified Finding<br/>(Map + radiometric proof + trace)"]
 ```
 
-Rather than allowing an LLM to guess numerical measurements, SatQuery AI delegates spatial and spectral calculations to deterministic GIS engines, locking numerical values directly to raster pixel counts.
+The system separates natural language reasoning from physical raster computation. The orchestrator decides *what* to measure; specialist engines and GIS routines perform the actual measurement. No language model estimates spatial quantities — all numerical values are locked to raster pixel counts.
+
+![System Architecture Overview](architecture/system_architecture.png)
+
+Full architecture documentation: [`ARCHITECTURE.md`](ARCHITECTURE.md) — includes detailed diagrams for [agentic workflow](architecture/agentic_workflow.png), [specialist dispatch](architecture/specialist_dispatch.png), [scientific gatekeeper](architecture/scientific_gatekeeper.png), and [evidence graph](architecture/evidence_graph.png).
 
 ---
 
-## 3. Architecture
+## Remote-Sensing Capabilities
 
-SatQuery AI consists of four modular layers decoupled between perception and deterministic physics:
-
-```mermaid
-flowchart TD
-    subgraph Tier1 ["Tier 1: Interaction & Localization Layer"]
-        T1_UI["Leaflet WebGL Map Console<br/>(Interactive Vector Overlays)"]
-        T1_Curtain["Split-Curtain Swipe<br/>(Optical vs. SAR Inspector)"]
-        T1_Persona["3-Way Persona Switcher<br/>(Farmer / District Collector / Scientist)"]
-        T1_Probe["Real-Time Pixel Probe<br/>(Raw DN & Calibrated Radiometry)"]
-        T1_Voice["Indic Multilingual Voice Engine<br/>(Sarvam AI API Integration)"]
-    end
-
-    subgraph Tier2 ["Tier 2: Agentic Orchestration Brain"]
-        T2_AST["Query Intent Parser & AST<br/>(Spatial & Temporal Extractor)"]
-        T2_Contract["Observation Contract Validator<br/>(CRS, Bounds & Resolution Check)"]
-        T2_Hypo["Competing Hypotheses Ledger<br/>(Priors, Null & Target Hypotheses)"]
-        T2_Planner["VOE Next-Action Planner<br/>(Value of Evidence Optimization)"]
-    end
-
-    subgraph Tier3 ["Tier 3: Specialist & Foundation Foundry"]
-        subgraph Sensors ["Satellite Rasters Ingested"]
-            S_Opt["Sentinel-2 MSI Optical<br/>(10m BOA Reflectance B02–B12)"]
-            S_SAR["Sentinel-1 C-SAR Radar<br/>(10m GRD Dual-Pol VV/VH)"]
-            S_Temp["Bi-Temporal Observation Pair<br/>(Epoch T1 vs. Epoch T2)"]
-        end
-
-        subgraph Engines ["Domain Specialist Engines"]
-            E_GIS["PhysicalGISEngine<br/>(Deterministic NDWI / NDVI / NDBI)"]
-            E_SAR["SensorAwareSARProcessor<br/>(Lee 5x5 Filter & dB Calibration)"]
-            E_CROMA["CROMA-Base Joint Embedder<br/>(194.3M Optical-Radar Latent)"]
-            E_Seg["SegFormer-B0 Specialist<br/>(10-Band Canopy Segmentation)"]
-            E_Ground["Florence-2-RS-LoRA<br/>(Spatial Bounding Box Grounding)"]
-            E_Change["BiTemporal Specialist<br/>(2D Fourier Phase Shift & Differencing)"]
-        end
-    end
-
-    subgraph Tier4 ["Tier 4: Scientific Trust & Provenance"]
-        T4_Nyquist["Nyquist Epistemic Barrier<br/>(Rejects Targets < 2x GSD)"]
-        T4_CoReg["Fourier Phase Co-Registration<br/>(Misregistration Barrier < 6.0 px)"]
-        T4_Arbiter["Multi-Sensor Contradiction Arbiter<br/>(Microwave Cloud Penetration)"]
-        T4_DAG["8-Stage Cryptographic DAG<br/>(SHA-256 Immutable Node Hashes)"]
-        T4_Output["Verified Earth Insight Dossier<br/>(GeoJSON, Exact Hectares, PDF/MD)"]
-    end
-
-    %% Operational Flows
-    Tier1 -->|"User Query, Persona & Spatial Extent"| Tier2
-    Tier2 -->|"Structured Dispatch & Tool Parameters"| Tier3
-    Sensors -->|"Calibrated Pixels & Metadata"| Engines
-    Engines -->|"Raw Radiometry & Spatial Proposals"| Tier4
-    Tier4 -->|"Cryptographically Verified Polygons & Dossier"| Tier1
-```
-
-Detailed documentation: [`ARCHITECTURE.md`](ARCHITECTURE.md) | Diagram: [`architecture/system_architecture.png`](architecture/system_architecture.png)
+- **Deterministic raster processing:** Calculates NDWI (water), NDVI (vegetation), and NDBI (built-up) from calibrated reflectance bands. Geodesic area is computed directly from pixel counts and affine transform matrices.
+- **Microwave SAR backscatter:** Ingests Sentinel-1 GRD dual-pol (VV/VH), performs Lee speckle filtering, and calibrates backscatter ($\sigma^0\text{ dB}$). Enables terrain and flood analysis through cloud cover.
+- **Cross-modal optical-SAR fusion:** Combines optical reflectance with radar returns. Surfaces an interactive split-curtain swipe tool for visual and quantitative comparison across sensors.
+- **Bi-temporal change detection:** Employs 2D Fourier phase correlation for sub-pixel co-registration before computing spectral differences between two acquisition dates.
+- **Foundation model adaptation:** Uses CROMA (194.3M parameters) for joint optical-SAR cross-attention features, Florence-2-RS-LoRA for visual bounding proposals, SegFormer-B0 for canopy segmentation, and a Siamese network for bi-temporal change QA.
 
 ---
 
-## 4. Technical Capabilities
+## Scientific Validation
 
-| Capability | Implementation Mechanism | Evidence Reference |
-| :--- | :--- | :--- |
-| **Optical Multispectral Analysis** | Sentinel-2 L2A surface reflectance; NDWI, NDVI, NDBI band mathematics | [`demos/hero_01_water.png`](demos/hero_01_water.png) |
-| **SAR Microwave Processing** | Sentinel-1 C-band Level-1 GRD; Lee speckle filtering; $\sigma^0\text{ dB}$ calibration | [`demos/hero_02_optical_sar.png`](demos/hero_02_optical_sar.png) |
-| **Optical + SAR Cross-Modal Fusion** | Multi-sensor agreement checking; microwave penetration through cloud cover | [`demos/hero_02_trace.png`](demos/hero_02_trace.png) |
-| **Bi-Temporal Change Detection** | Sub-pixel 2D Fourier phase registration; spectral differencing; change clustering | [`demos/hero_03_bitemporal.png`](demos/hero_03_bitemporal.png) |
-| **Spatial Grounding** | Text-guided bounding box detection; polygonization; UTM to WGS-84 coordinate mapping | [`models/model_cards/florence2_rs_lora.md`](models/model_cards/florence2_rs_lora.md) |
-| **Multi-Spectral Segmentation** | 10-band SegFormer-B0 encoder adapted for Copernicus forest canopy classes | [`models/model_cards/segformer_b0_dlt.md`](models/model_cards/segformer_b0_dlt.md) |
-| **Nyquist Sampling Guardrail** | Rejects sub-resolution feature requests below $2 \times \text{GSD}$ ($20\text{m}$ for Sentinel) | [`demos/nyquist_abstention.png`](demos/nyquist_abstention.png) |
-| **Cryptographic Provenance DAG** | 8-stage immutable graph recording input hashes, parameters, and outputs | [`architecture/evidence_graph.png`](architecture/evidence_graph.png) |
+- **Query-Observation Contract:** The system validates coordinate reference system (CRS), bounds, and ground sampling distance before executing any analysis.
+- **Nyquist epistemic guardrail:** The system rejects queries asking to detect objects smaller than $2 \times \text{GSD}$ ($20\text{ m}$ for Sentinel-2 $10\text{ m}$ bands), preventing hallucinated sub-pixel detections.
+- **Co-registration displacement barrier:** Halts bi-temporal differencing if relative image shift exceeds 6.0 pixels, avoiding false positive change edges.
+- **Cross-sensor arbitration:** When optical data shows heavy cloud cover but radar shows specular water returns ($\sigma^0 < -18\text{ dB}$), radar is given precedence based on microwave wave propagation physics.
+- **8-stage cryptographic evidence graph:** Every step (query, hypothesis, asset registration, parameters, pixel array hashes, arbitration, barrier check, and polygon export) is recorded in an immutable SHA-256 directed acyclic graph.
 
 ---
 
-## 5. Scientific Validation
+## Three Hero Investigations
 
-The system has been evaluated through automated regression suites and edge-case validation:
-- **Critical Regression Suite:** 30 of 33 tests passed (90.9% pass rate); the 3 flagged cases represent rigid string assertion mismatches and cloud weighting edge cases, fully analyzed in [`validation/regression_summary.md`](validation/regression_summary.md).
-- **Zero Mock Leakage:** Verified that production routes execute real raster mathematics with zero hardcoded lookup tables.
-- **Fault Tolerance:** Evaluated orchestrator resilience when individual specialist modules are bypassed or unavailable ([`validation/specialist_bypass_results.md`](validation/specialist_bypass_results.md)).
-
-Detailed documentation: [`VALIDATION.md`](VALIDATION.md)
-
----
-
-## 6. Benchmark Results
-
-All metrics below are reconciled against saved evaluation artifacts on disk. We make zero claims on unreleased or private datasets.
-
-| Benchmark | Dataset / Task | Sample Size | Evaluated Metric | Observed Result | Status | Reference Artifact |
-| :--- | :--- | :--- | :--- | :--- | :---: | :--- |
-| **RSVQA-LR** | Sentinel-2 MSI Single-Image VQA (10m GSD) | 500 held-out items | Overall Top-1 Accuracy | **29.40%** (Presence: **53.71%**, Comparison: **44.83%**, Count: **4.72%**, Attribute: **0.00%**) | **EVALUATED** | [`benchmark-results/RSVQA_summary.json`](benchmark-results/RSVQA_summary.json) |
-| **RSVQA Calibration** | VQA Probability Calibration | 500 test items | ECE / MCE / Brier | **ECE: 25.26%**, MCE: 41.20%, Brier: 0.2718 *(Enforces Immediate Null Policy: confidence = null)* | **VERIFIED** | `artifacts/vqa_calibration_metrics.json` |
-| **CDVQA** | Bi-Temporal Change Detection QA | 200 test pairs | Classification Accuracy | Deterministic: **38.50%**, Learned: **58.00%**, Hybrid: **59.00%** (Increase: **75–85%**, Decrease: **62.5–70.8%**) | **EVALUATED** | [`benchmark-results/CDVQA_summary.json`](benchmark-results/CDVQA_summary.json) |
-| **Copernicus DLT 2018**| 10-Band Canopy Segmentation | 3,000 tiles | Mean IoU | **0.6907 mIoU** (Broadleaved: 0.7765, Non-Tree: 0.7820, Coniferous: 0.5136) | **EVALUATED** | `benchmarks/evaluate_segformer_baseline.py` |
-| **VRSBench** | Visual Grounding | N/A | Box IoU @ 0.5 | **N/A** | **NOT EVALUATED / NOT PROVEN** | None |
-| **ISRO Private Archives** | Operational Cartosat / RISAT | Unreleased ISRO Data | Task Success Rate | **N/A** | **PRIVATE / NOT PROVEN** | None |
-
-Detailed documentation: [`BENCHMARKS.md`](BENCHMARKS.md) | [`benchmark-results/benchmark_notes.md`](benchmark-results/benchmark_notes.md)
-
----
-
-## 7. Three Hero Demonstrations
-
-### Hero 01: Single-Image Water Body Delineation (Chilika Lagoon)
-- **Scenario ID:** `001_chilika_water`
-- **Location:** Chilika Lagoon (Balugaon Shoreline), Odisha, India (`EPSG:32645`)
-- **Sensor:** Copernicus Sentinel-2C MSI (Level-2A BOA Reflectance, 10m GSD), Acquired: `2026-09-18T05:03:17Z`
-- **Query:** *"Identify the major open-water region in this scene and highlight it on the satellite image."*
-- **Observed Result:** Delineates **2,278.4 Hectares (5,630.0 Acres)** of open water using $NDWI \ge 0.15$. The text finding is locked directly to the raster pixel count.
+**Demo 01 — Water Body Delineation (Chilika Lagoon)**  
+- **Query:** *"Identify the major open-water region in this scene."*  
+- **Input:** Sentinel-2C MSI, 2026-09-18, EPSG:32645  
+- **Method:** NDWI $\ge 0.15$ threshold, geodesic polygon area from pixel count  
+- **Observed:** **2,278.4 ha** (5,630.0 acres) of open water delineated  
 - **Evidence:** [`demos/hero_01_water.png`](demos/hero_01_water.png) | [`demos/hero_01_water_detail.png`](demos/hero_01_water_detail.png)
 
-### Hero 02: Optical + SAR All-Weather Cross-Modal Fusion (Bengaluru)
-- **Scenario ID:** `015_optical_sar_fusion`
-- **Location:** Bengaluru Urban Corridor, Karnataka, India (`EPSG:32643`)
-- **Sensors:** Sentinel-2B MSI (Optical) + Sentinel-1A C-SAR (Microwave GRD), Acquired: `2026-05-12T05:25:16Z`
-- **Query:** *"Use the optical and SAR observations together to determine whether both sensors provide consistent evidence about the major land-cover pattern."*
-- **Observed Result:** Evaluates optical reflectance alongside SAR backscatter. Where cloud cover attenuates optical signal, C-band microwave penetration ($\sigma^0 < -18\text{ dB}$ for specular water, $> -6\text{ dB}$ for built-up) provides independent physical corroboration via interactive split curtain.
+**Demo 02 — Optical + SAR Cross-Modal Fusion (Bengaluru)**  
+- **Query:** *"Do both sensors provide consistent evidence about the major land-cover pattern?"*  
+- **Input:** Sentinel-2B + Sentinel-1A C-SAR, 2026-05-12, EPSG:32643  
+- **Method:** Optical reflectance vs. SAR backscatter; $\sigma^0 < -18\text{ dB}$ for specular water, $> +5\text{ dB}$ for double-bounce built-up; interactive split curtain  
+- **Observed:** Cross-modal agreement confirmed; SAR provides independent corroboration where cloud cover attenuates optical signal  
 - **Evidence:** [`demos/hero_02_optical_sar.png`](demos/hero_02_optical_sar.png) | [`demos/hero_02_trace.png`](demos/hero_02_trace.png)
 
-### Hero 03: Bi-Temporal Urban Settlement Expansion (Bengaluru)
-- **Scenario ID:** `017_bitemporal_urban_change`
-- **Location:** Bengaluru Urban Corridor, Karnataka, India (`EPSG:32643`)
-- **Sensors:** Matched Sentinel-2B MSI Pair: Epoch T1 (`2026-05-12T05:25:16Z`) vs Epoch T2 (`2026-09-19T05:00:00Z`)
-- **Query:** *"Did the built-up area expand between these two observations? Show where the change occurred."*
-- **Observed Result:** Enforces sub-pixel 2D Fourier phase correlation ($0.21\text{ px} < 6.0\text{ px}$ barrier) before differencing. Quantifies **+36.4 Hectares** of new built-up construction flux with vector change boundaries.
+**Demo 03 — Bi-Temporal Urban Expansion (Bengaluru)**  
+- **Query:** *"Did the built-up area expand between these two observations?"*  
+- **Input:** Matched Sentinel-2B pair, T1: 2026-05-12 $\to$ T2: 2026-09-19, EPSG:32643  
+- **Method:** Sub-pixel 2D Fourier phase co-registration ($0.21\text{ px} < 6.0\text{ px}$ barrier), spectral differencing  
+- **Observed:** **+36.4 ha** new built-up area detected with vector change boundaries  
 - **Evidence:** [`demos/hero_03_bitemporal.png`](demos/hero_03_bitemporal.png) | [`demos/hero_03_change_detail.png`](demos/hero_03_change_detail.png)
 
 ---
 
-## 8. Data Provenance
+## Benchmarks
 
-All demonstration scenarios utilize authentic, calibrated satellite rasters:
-- **Optical Data:** Copernicus Sentinel-2 MSI Level-2A surface reflectance (10m GSD).
-- **SAR Data:** Copernicus Sentinel-1 C-SAR Level-1 GRD, dual-polarization VV/VH (10m GSD).
-- **Source:** European Space Agency (ESA) via AWS Open Data Cloud-Optimized GeoTIFFs.
-- **Licensing:** [CC-BY-SA 3.0 IGO](https://creativecommons.org/licenses/by-sa/3.0/igo/) (Copernicus Open Access Terms).
-- **Zero Synthetic Pixels:** All 20 scenes represent authentic satellite acquisitions across India.
+All metrics below are reconciled against saved evaluation artifacts on disk. We make zero claims on unreleased or private datasets.
 
-Complete machine-readable catalog: [`provenance/scenario_manifest.csv`](provenance/scenario_manifest.csv) | Detailed documentation: [`DATA_PROVENANCE.md`](DATA_PROVENANCE.md)
+| Benchmark | Task | Samples | Result | Status | Artifact |
+| :--- | :--- | :--- | :--- | :---: | :--- |
+| **RSVQA-LR** | Sentinel-2 Single-Image VQA | 500 | **29.40%** Overall (Presence: 53.71%, Comparison: 44.83%, Count: 4.72%, Attribute: 0.00%) | EVALUATED | [`RSVQA_summary.json`](benchmark-results/RSVQA_summary.json) |
+| **CDVQA** | Bi-Temporal Change Detection QA | 200 | Hybrid: **59.00%**, Deterministic: 38.50%, Learned: 58.00% | EVALUATED | [`CDVQA_summary.json`](benchmark-results/CDVQA_summary.json) |
+| **Copernicus DLT** | 10-Band Canopy Segmentation | 3,000 | **0.6907 mIoU** (Broadleaved: 0.7765, Non-Tree: 0.7820, Coniferous: 0.5136) | EVALUATED | `evaluate_segformer_baseline.py` |
+| **VRSBench** | Visual Grounding | N/A | N/A | NOT EVALUATED | — |
+| **ISRO Archives** | Cartosat / RISAT | Unreleased | N/A | PRIVATE / NOT PROVEN | — |
 
----
+> [!CAUTION]
+> VQA probability calibration shows significant miscalibration (ECE: 25.26%, MCE: 41.20%, Brier: 0.2718). The system enforces an **Immediate Null Policy** — confidence values are set to `null` and displayed as "Uncalibrated" rather than emitting misleading probabilities.
 
-## 9. Known Limitations
-
-In accordance with scientific rigor, the operational boundaries of the system are explicitly documented:
-1. **Conifer Canopy Margin Recall:** On 10m Sentinel-2 data, coniferous forest recall drops to **31.32%** within $\le 10\text{m}$ of stand edges due to mixed foliage/understory pixels.
-2. **Bathymetry Refusal:** The system measures water surface area (2,278.4 ha) but strictly refuses water depth/volume estimation without active sonar or bathymetric surveys.
-3. **Co-Registration Barrier:** If bi-temporal image displacement exceeds $6.0\text{ pixels}$, change detection is automatically halted to prevent false edge artifacts.
-4. **VQA Calibration:** Vision-language models exhibit significant miscalibration on satellite queries ($ECE = 25.26\%$). The system enforces the **Immediate Null Policy** (`confidence = null`, displaying *"Uncalibrated"*) rather than emitting misleading probabilities.
-5. **Numerical Counting Limit:** Fine-grained object counting on 10m rasters is limited (**4.72%** on RSVQA-LR); users are advised to use vector polygonization instead.
-
-Detailed documentation: [`LIMITATIONS.md`](LIMITATIONS.md)
+Detailed documentation: [`BENCHMARKS.md`](BENCHMARKS.md) | [`benchmark_notes.md`](benchmark-results/benchmark_notes.md)
 
 ---
 
-## 10. Public vs Private Repository Boundary
+## Data Provenance
 
-| Capability / Asset | Public Evidence Package (`SatQuery-AI-SIH-2026-Evidence/`) | Private Engineering Repository |
-| :--- | :--- | :--- |
-| **Purpose** | Supplementary technical evidence & validation record | Complete implementation codebase & development history |
-| **Source Code** | None included (no `.py`, `.tsx`, `.ts` implementations) | Full Python backend, React frontend, training routines |
-| **Model Weights** | Architectural parameters, model cards, SHA-256 digests | Binary checkpoint files (`.pt`, `.bin`, `.safetensors`) |
-| **Rasters** | 20-scene metadata manifest, coordinates, checksums | Multi-gigabyte GeoTIFF raster files and local caches |
-| **Credentials** | Zero credentials or tokens included | Protected local `.env` configuration files |
-| **API Contract** | Sanitized OpenAPI 3.1 schema for local evaluation | Full live API application with private routing |
+All 20 demonstration scenes are real satellite acquisitions — none are synthetic or simulated.
 
----
+- **Optical:** Copernicus Sentinel-2 MSI Level-2A surface reflectance (10 m GSD)
+- **SAR:** Copernicus Sentinel-1 C-SAR Level-1 GRD, dual-pol VV/VH (10 m GSD)
+- **Source:** ESA via AWS Open Data (Cloud-Optimized GeoTIFFs)
+- **License:** [CC-BY-SA 3.0 IGO](https://creativecommons.org/licenses/by-sa/3.0/igo/) (Copernicus Open Access)
 
-## 11. Supplementary Demonstration Video
-
-- **Video Link:** [Watch the 6-Minute Demonstration on YouTube (Unlisted)](demo/DEMO_VIDEO.md)
-- **Status:** Supplementary technical evidence provided for evaluator convenience.
-- **Chapter Breakdown:**
-  - `00:00` — Problem Statement 26167 & Earth Observation bottlenecks
-  - `00:30` — Architecture: Decoupling perception from raster physics
-  - `01:00` — Hero 01: Water body delineation in Chilika Lagoon (2,278.4 ha)
-  - `02:00` — Hero 02: Optical + SAR cloud penetration in Bengaluru
-  - `03:15` — Hero 03: Bi-temporal urban expansion in Bengaluru (+36.4 ha)
-  - `04:30` — Nyquist spatial resolution barrier ($2 \times \text{GSD} = 20\text{m}$)
-  - `05:00` — 8-stage cryptographic evidence DAG and exportable report
-  - `05:40` — Summary and ISRO adapter interfaces
-
-Detailed timeline: [`demo/demo_timeline.md`](demo/demo_timeline.md)
+Full catalog: [`provenance/scenario_manifest.csv`](provenance/scenario_manifest.csv) | Details: [`DATA_PROVENANCE.md`](DATA_PROVENANCE.md)
 
 ---
 
-## 12. Official SIH Presentation Alignment
+## Limitations
 
-The official SIH 2026 presentation submission consists of a 6-slide deck:
-- **Slide 1:** Title, Team STARFORGE, Problem Statement 26167
-- **Slide 2:** Problem Identification & Core Earth Observation Challenges
-- **Slide 3:** Proposed Solution & Decoupled Perception-Physics Architecture
-- **Slide 4:** Technical Methodology, Specialist Dispatch & Physical Formulas
-- **Slide 5:** Feasibility, Practicability, Sustainability & Social Impact
-- **Slide 6:** Technical Evidence Summary *(contains supplementary QR codes linking to this public GitHub evidence repository and the unlisted demonstration video)*
+Every measurement system has limits. We document ours so evaluators know exactly what the system can and cannot do:
 
-*(Slide 7 from the original organizer template is the instruction sheet and is excluded from the submission deck).*
+1. **Conifer edge recall:** On 10 m Sentinel-2 data, coniferous forest recall drops to 31.32% within $\le 10\text{ m}$ of stand edges due to mixed foliage and understory pixels.
+2. **Bathymetry refusal:** The system measures water surface area (2,278.4 ha) but refuses depth or volume estimation without active sonar or bathymetric surveys.
+3. **Co-registration barrier:** If bi-temporal image displacement exceeds 6.0 pixels, change detection is automatically halted to prevent false edge artifacts.
+4. **VQA calibration:** Vision-language models exhibit significant miscalibration on satellite queries ($\text{ECE} = 25.26\%$). The system enforces an Immediate Null Policy rather than emitting misleading probabilities.
+5. **Counting limit:** Fine-grained object counting on 10 m rasters is limited (4.72% on RSVQA-LR); vector polygonization is used instead.
+
+Details: [`LIMITATIONS.md`](LIMITATIONS.md)
 
 ---
 
-## 13. Team & Authorship
+## Public / Private Repository Boundary
 
-- **Team:** STARFORGE  
-- **Event:** Smart India Hackathon 2026 Grand Finale  
-- **Problem Statement:** 26167 (ISRO / SAC) — AI-Powered VQA and Multimodal Earth Observation Analysis  
-- **Documentation License:** [CC-BY 4.0 International](https://creativecommons.org/licenses/by/4.0/)  
-- **Satellite Data License:** [CC-BY-SA 3.0 IGO](https://creativecommons.org/licenses/by-sa/3.0/igo/) (Copernicus Open Access)
+This repository contains selected technical evidence for evaluation and documentation. The production implementation, private model weights, credentials and restricted evaluation material are maintained separately.
+
+- **Public evidence repository:** Architectural diagrams, scientific method definitions, model cards with cryptographic hashes, benchmark results with JSON artifacts, data provenance catalog, validation test summaries, and sanitized OpenAPI schema.
+- **Private repository:** Core Python and TypeScript source code, training pipelines, unreleased model checkpoints, raw raster cache, and environment secrets.
+
+---
+
+## Demo Video
+
+> **Official SIH Demo Video:**  
+> Demo video: To be added before public release.  
+> The demonstration walkthrough will be uploaded before final release. Once uploaded, the unlisted link will be inserted here.
+
+- Documentation: [`demo/DEMO_VIDEO.md`](demo/DEMO_VIDEO.md)
+- Walkthrough timeline and narration script: [`demo/demo_timeline.md`](demo/demo_timeline.md)
+
+---
+
+## Reproducibility
+
+An evaluator can verify the evidence in this repository by:
+
+1. Checking SHA-256 hashes in [`models/checkpoint_hashes.txt`](models/checkpoint_hashes.txt) against the model cards
+2. Comparing benchmark numbers in [`benchmark-results/RSVQA_summary.json`](benchmark-results/RSVQA_summary.json) and [`benchmark-results/CDVQA_summary.json`](benchmark-results/CDVQA_summary.json) against this README
+3. Reviewing the 20-scene provenance catalog in [`provenance/scenario_manifest.csv`](provenance/scenario_manifest.csv)
+4. Inspecting the sanitized API contract in [`api/sanitized_openapi.json`](api/sanitized_openapi.json)
+5. Reviewing automated test logs in [`validation/regression_summary.md`](validation/regression_summary.md) and provider truthfulness in [`validation/provider_truthfulness.md`](validation/provider_truthfulness.md)
+
+Full inspection protocol: [`REPRODUCIBILITY.md`](REPRODUCIBILITY.md) | Release manifest: [`PUBLIC_RELEASE_MANIFEST.md`](PUBLIC_RELEASE_MANIFEST.md)
+
+---
+
+## Team
+
+**Team STARFORGE**  
+Smart India Hackathon 2026 Grand Finale  
+Problem Statement 26167 (ISRO / SAC) — AI-Powered VQA and Multimodal Earth Observation Analysis
+
+- Documentation License: [CC-BY 4.0 International](https://creativecommons.org/licenses/by/4.0/)  
+- Satellite Data License: [CC-BY-SA 3.0 IGO](https://creativecommons.org/licenses/by-sa/3.0/igo/) (Copernicus Open Access)

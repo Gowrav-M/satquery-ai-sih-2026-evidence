@@ -1,5 +1,4 @@
 # Model Card: CDVQA Siamese Cross-Encoder
-## SIH 2026 Problem Statement 26167 (ISRO / SAC) | Model Evidence
 
 ---
 

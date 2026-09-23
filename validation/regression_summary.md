@@ -1,6 +1,4 @@
 # SatQuery AI — Automated Regression Suite & Failure Taxonomy
-## Deep Scientific Test Results | SIH 2026 Problem Statement 26167 (ISRO / SAC)
-**Team:** STARFORGE  
 **Audited Date:** September 22, 2026  
 **Execution Environment:** Python 3.11 / Pytest 8.4.2 / Windows 11 / CUDA 12  
 
@@ -44,7 +42,7 @@ During our rigorous pre-submission audit, exactly three test assertions were fla
 ### Case 1: `test_cloudy_optical_sar_contradiction_arbitration`
 - **What Occurred:** The system correctly identified 100% cloud attenuation in optical and 100% specular water attenuation ($< -22\text{ dB}$) in SAR, assigning SAR radar primacy.
 - **Why Assertion Tripped:** The test searched for the exact string `"Cross-Sensor Arbitration"` in the summary heading, whereas the production engine stored the full arbitration record in `res.caveats_and_limitations` and output `"Cross-Sensor Discord: Optical scene exhibits 100.0% cloud attenuation..."`.
-- **Engineering Verdict:** **Scientifically Valid.** The physical contradiction logic executed flawlessly; the string assertion was simply overly rigid.
+- **Engineering Verdict:** **Scientifically Valid.** The physical contradiction logic executed as designed; the string assertion was simply overly rigid.
 
 ### Case 2: `test_bad_registration_barrier_suppression`
 - **What Occurred:** A 10-pixel horizontal displacement shift was injected into a bi-temporal acquisition pair.

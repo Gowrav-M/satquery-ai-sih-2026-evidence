@@ -1,5 +1,4 @@
 # Model Card: SegFormer-B0 10-Band Multi-Spectral
-## SIH 2026 Problem Statement 26167 (ISRO / SAC) | Model Evidence
 
 ---
 

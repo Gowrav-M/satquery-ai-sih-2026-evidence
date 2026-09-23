@@ -1,14 +1,12 @@
-# SatQuery AI — Official Grand-Finale Demonstration Video
-## Smart India Hackathon 2026 | Problem Statement 26167 (ISRO / SAC)
-**Team:** STARFORGE  
+# SatQuery AI — Demonstration Video
 
 ---
 
 ## Demonstration Video Link
 
 > **Official SIH Demo Video:**  
-> **[Watch the 6-Minute Demonstration on YouTube (Unlisted)](https://youtu.be/YOUR_UNLISTED_VIDEO_ID)**  
-> *(Note: The video is hosted as an **Unlisted** YouTube recording for SIH evaluation privacy. Replace placeholder with your team's unlisted link.)*
+> Demo video: To be added before public release.  
+> The demonstration walkthrough will be uploaded before final release. Once uploaded, the unlisted link will be inserted here.
 
 ---
 

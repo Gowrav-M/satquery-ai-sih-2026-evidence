@@ -1,12 +1,10 @@
-# SatQuery AI — Earth Observation Data Provenance & Corpus Manifest
-## Scientific Integrity Record | SIH 2026 Problem Statement 26167 (ISRO / SAC)
-**Team:** STARFORGE  
+# SatQuery AI — Data Provenance
 
 ---
 
-## 1. Data Provenance & Zero-Synthetic-Pixel Guarantee
+## 1. Data Provenance
 
-SatQuery AI is built and evaluated exclusively on **authentic, calibrated Earth Observation satellite rasters**:
+SatQuery AI uses real satellite imagery for all demonstrations and evaluations:
 - **Optical Sensors:** Copernicus Sentinel-2A / Sentinel-2B / Sentinel-2C Multi-Spectral Instrument (MSI), processed to Level-2A Bottom-of-Atmosphere (BOA) surface reflectance.
 - **SAR Sensors:** Copernicus Sentinel-1A C-Band Synthetic Aperture Radar (SAR), processed to Level-1 Ground Range Detected (GRD) with terrain-corrected backscatter.
 - **Data Source Provider:** European Space Agency (ESA) Copernicus Data Space Ecosystem via AWS Open Data Cloud-Optimized GeoTIFF (COG) archives.
@@ -14,7 +12,7 @@ SatQuery AI is built and evaluated exclusively on **authentic, calibrated Earth 
 
 > [!IMPORTANT]
 > **Zero Synthetic Pixels in Demonstration Scenarios:**  
-> All 20 canonical scenes in the demonstration corpus consist of authentic, real-world satellite acquisitions. No synthetic textures, simulated pixels, or fabricated geometries exist in the operational mission catalog.
+> All 20 scenes in the demonstration corpus are real satellite acquisitions. None are synthetic or simulated.
 
 ---
 
@@ -49,5 +47,5 @@ The 20-scenario demonstration corpus captures the full spectrum of Indian agro-e
 
 ## 3. Cryptographic Verification Manifest
 
-The complete machine-readable manifest including geographic coordinates, bounding boxes, GSD, CRS, and cryptographic SHA-256 hashes is published at:  
+The complete machine-readable manifest including geographic coordinates, bounding boxes, GSD, CRS, and cryptographic SHA-256 hashes is provided at:  
 [`provenance/scenario_manifest.csv`](provenance/scenario_manifest.csv)

@@ -1,6 +1,4 @@
 # SatQuery AI — Benchmark Methodology & Reconciliation Notes
-## Evaluation Protocol | SIH 2026 Problem Statement 26167 (ISRO / SAC)
-**Team:** STARFORGE  
 
 ---
 

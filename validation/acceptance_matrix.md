@@ -1,6 +1,4 @@
 # SatQuery AI — Functional Acceptance Matrix
-## Comprehensive System Verification | SIH 2026 Problem Statement 26167 (ISRO / SAC)
-**Team:** STARFORGE  
 
 ---
 

@@ -1,6 +1,4 @@
 # SatQuery AI — 20-Scenario Demonstration Corpus Forensic Audit
-## Zero-Synthetic-Pixel Verification | SIH 2026 Problem Statement 26167 (ISRO / SAC)
-**Team:** STARFORGE  
 **Audited Date:** September 22, 2026  
 **Auditor:** Automated Forensic Integrity Script (`scripts/verify_demo_corpus_integrity.py`)  
 

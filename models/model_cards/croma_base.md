@@ -1,5 +1,4 @@
 # Model Card: CROMA-Base (Cross-Modal Foundation Model)
-## SIH 2026 Problem Statement 26167 (ISRO / SAC) | Model Evidence
 
 ---
 

@@ -1,12 +1,10 @@
-# SatQuery AI — Scientific Assumptions & Known Limitations
-## Honest Technical Disclosure | SIH 2026 Problem Statement 26167 (ISRO / SAC)
-**Team:** STARFORGE  
+# SatQuery AI — Known Limitations
 
 ---
 
 ## 1. Principles of Scientific Transparency
 
-A core tenet of ISRO engineering is the honest delineation of operational boundaries. SatQuery AI does not claim universal, omniscient intelligence. Rather, it explicitly defines its mathematical and physical boundaries:
+Every measurement system has limits. We document ours so evaluators know exactly what the system can and cannot do.
 
 ---
 

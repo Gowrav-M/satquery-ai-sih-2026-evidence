@@ -1,6 +1,4 @@
-# SatQuery AI — Technical Evidence & Verification Guide
-## Evaluator Verification Guide | SIH 2026 Problem Statement 26167 (ISRO / SAC)
-**Team:** STARFORGE  
+# SatQuery AI — Verification Guide
 
 ---
 
@@ -27,7 +25,7 @@ Evaluators can verify that the demonstration corpus and model checkpoints are au
 ```bash
 # Verify Scenario Manifest
 # Target File: provenance/scenario_manifest.csv
-# Expected SHA-256 matches the entries published in the manifest.
+# Expected SHA-256 matches the entries recorded in the manifest.
 
 # Example Verification on Unix / macOS:
 shasum -a 256 provenance/scenario_manifest.csv

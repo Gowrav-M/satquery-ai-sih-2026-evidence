@@ -1,5 +1,4 @@
 # SatQuery AI — Demonstration Recording Script & Timeline
-## Practical Recording Guidelines for Team STARFORGE | SIH 2026 Problem Statement 26167
 **Duration:** Exactly 6 Minutes (360 Seconds)  
 
 ---

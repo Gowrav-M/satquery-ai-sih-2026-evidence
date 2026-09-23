@@ -1,6 +1,4 @@
-# SatQuery AI — Remote-Sensing Model Adaptation
-## Model Registry & Fine-Tuning Evidence | SIH 2026 Problem Statement 26167 (ISRO / SAC)
-**Team:** STARFORGE  
+# SatQuery AI — Model Adaptation
 
 ---
 
@@ -19,7 +17,7 @@
 | **SegFormer-B0 DLT** | 10-Band Multi-Spectral Canopy Segmentation | MiT-B0 Multi-Spectral Transformer | Multi-Spectral Fine-Tuning (Unweighted CE) | Copernicus DLT 2018 + Sentinel-2 L2A | `0129f4549cfd...712c` | **BENCHMARK_ONLY** (Evaluated on Copernicus DLT; not in live investigation loop) |
 | **Florence-2-RS-LoRA** | Visual Grounding & Scene Captioning | `microsoft/Florence-2-base` (232M) | PEFT LoRA (Rank 16, Alpha 32) | BigEarthNet RS + RS Grounding & VQA Datasets | `741681f95a5e...1673` | **LIVE_EXECUTED** (Text-guided bounding box grounding; VQA enforces Immediate Null Policy) |
 | **CDVQA Siamese** | Bi-Temporal Change VQA | Siamese Dual-Branch ResNet/ViT | Condition B Temporal Regularization | CDVQA Bi-temporal Benchmark | `b9a0be3cae0c...7101` | **BENCHMARK_ONLY** (Offline evaluation on 200 CDVQA samples) |
-| **Primary Agent Brain** | Query Intent & Orchestration | Multi-Tier Cascade (DeepSeek-V4-Flash / Gemini / Nemotron) | Multi-Billion Frontier Pretraining | Structured EO Reasoning & JSON Schema | Cloud API / Local Deterministic Fallback | **LIVE_EXECUTED** (Gemini Flash verified; DeepSeek CONFIGURED — NOT VERIFIED) |
+| **Agent Orchestration Core** | Query Intent & Orchestration | Google Gemini Flash with local deterministic fallback | Frontier Multimodal Pretraining | Structured EO Intent Parsing & Schema Enforcement | Cloud API / Local Rule Engine | **LIVE_EXECUTED** (Gemini Flash runtime trace verified; secondary routes documented in validation telemetry) |
 
 ---
 

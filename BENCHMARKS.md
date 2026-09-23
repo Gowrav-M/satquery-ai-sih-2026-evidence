@@ -1,6 +1,4 @@
-# SatQuery AI — Empirical Benchmark Performance
-## Verified Evaluation Results | SIH 2026 Problem Statement 26167 (ISRO / SAC)
-**Team:** STARFORGE  
+# SatQuery AI — Benchmark Performance
 
 ---
 

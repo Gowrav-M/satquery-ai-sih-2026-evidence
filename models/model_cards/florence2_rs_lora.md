@@ -1,5 +1,4 @@
 # Model Card: Florence-2-RS-LoRA
-## SIH 2026 Problem Statement 26167 (ISRO / SAC) | Model Evidence
 
 ---
 

@@ -2,7 +2,6 @@
 ## Organization: Indian Space Research Organisation (ISRO) / Space Applications Centre (SAC)
 **Title:** AI-powered Visual Question Answering and Interactive Analysis for Multi-Sensor Earth Observation Data  
 **Category:** Software | **Theme:** Space Technology  
-**Team:** STARFORGE  
 
 ---
 

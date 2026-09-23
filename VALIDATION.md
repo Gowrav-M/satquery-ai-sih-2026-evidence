@@ -1,6 +1,4 @@
-# SatQuery AI — System Validation & Regression Evidence
-## Quality Assurance & Automated Testing Record | SIH 2026 Problem Statement 26167 (ISRO / SAC)
-**Team:** STARFORGE  
+# SatQuery AI — Validation & Regression Evidence
 
 ---
 
@@ -33,7 +31,7 @@ The SatQuery AI validation methodology follows a multi-tier testing pyramid:
 - `test_real_bitemporal_pair_investigation` $\to$ **PASSED** (2D phase cross-correlation displacement & change clustering)
 - `test_subresolution_nyquist_abstention` $\to$ **PASSED** (Physical Nyquist barrier: $3.5\text{m} < 20.0\text{m}$ rejection)
 - `test_provenance_replay_and_downloadable_report` $\to$ **PASSED** (SHA-256 DAG and report generation)
-- `test_zero_mock_leakage_measurements` $\to$ **PASSED** (Guarantees zero hardcoded dictionary lookups)
+- `test_zero_mock_leakage_measurements` $\to$ **PASSED** (Confirms zero hardcoded dictionary lookups)
 - `test_quarantine_barrier_raises_runtime_error_on_real_investigation` $\to$ **PASSED** (Legacy synthetic mocks quarantined)
 
 ---
@@ -42,6 +40,6 @@ The SatQuery AI validation methodology follows a multi-tier testing pyramid:
 
 - [`validation/acceptance_matrix.md`](validation/acceptance_matrix.md) — Complete acceptance matrix matching every functional contract.
 - [`validation/specialist_bypass_results.md`](validation/specialist_bypass_results.md) — Defensive fault tolerance when individual tools are unavailable.
-- [`validation/corpus_integrity.md`](validation/corpus_integrity.md) — 20-scene GeoTIFF integrity audit results (20/20 certified).
+- [`validation/corpus_integrity.md`](validation/corpus_integrity.md) — 20-scene GeoTIFF integrity audit results (20/20 scenes verified).
 - [`validation/provider_truthfulness.md`](validation/provider_truthfulness.md) — Multi-tier LLM provider failover and latency telemetry.
 - [`validation/regression_summary.md`](validation/regression_summary.md) — Detailed pytest logs and failure taxonomy analysis.

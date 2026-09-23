@@ -1,6 +1,4 @@
 # SatQuery AI — Sensor & Data Provenance Record
-## Attribution & Open Access Compliance | SIH 2026 Problem Statement 26167 (ISRO / SAC)
-**Team:** STARFORGE  
 
 ---
 
