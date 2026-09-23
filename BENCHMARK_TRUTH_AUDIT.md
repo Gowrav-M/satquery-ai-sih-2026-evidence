@@ -1,7 +1,7 @@
 # SatQuery AI — Benchmark Truth Forensic Audit & Reconciliation
 
 **Audit Date:** September 22, 2026  
-**Auditor:** Maestro AI Forensic Pipeline (Zero-Overclaim Mandate)  
+**Auditor:** Team STARFORGE Internal Audit (Zero-Overclaim Mandate)  
 **Target:** Elimination of all ungrounded figures across public evidence documentation.
 
 ---

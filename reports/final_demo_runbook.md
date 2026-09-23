@@ -66,7 +66,7 @@ flowchart LR
 ---
 
 ### Act 6: 8-Stage Cryptographic Evidence Graph & Audit Export (1.5 Minutes)
-- **Goal:** Prove complete reproducibility and peer-review grade accountability.
+- **Goal:** Prove complete reproducibility and auditable accountability.
 - **Demonstration:**
   - Inspect the 8-stage Directed Acyclic Graph (DAG) in the right-hand panel.
   - Show SHA-256 cryptographic node signatures linking Query $\to$ Hypotheses $\to$ Asset $\to$ Measurement $\to$ Finding.

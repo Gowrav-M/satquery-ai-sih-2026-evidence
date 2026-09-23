@@ -9,8 +9,8 @@
 - **Architecture:** MiT-B0 Multi-Spectral Hierarchical Transformer
 - **Parameters:** 3,714,563
 - **Input Channels:** 10 Sentinel-2 bands: B02, B03, B04, B05, B06, B07, B08, B8A, B11, B12
-- **Checkpoint SHA-256:** `7b8e1f5923bc0912ad8467e21a830df9310cba48392efb51d02c784918e9a112`
-- **File Size:** 14.2 MB (`best_model.pt`)
+- **Checkpoint SHA-256:** `0129f4549cfd3216c31268c3adadb0b5c10d50deb6d716c8852c119ea541712c`
+- **File Size:** 14.3 MB (`pytorch_model.bin`)
 - **License:** Apache 2.0
 
 ---

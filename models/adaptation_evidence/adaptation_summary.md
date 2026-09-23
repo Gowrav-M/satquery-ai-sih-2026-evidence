@@ -16,10 +16,10 @@ Generic vision-language models pre-trained on everyday consumer photography (COC
 
 | Target Task | Base Model (Zero-Shot) | Adapted SatQuery Model | Metric Gain |
 | :--- | :--- | :--- | :--- |
-| **RS Region Grounding** | 38.2% Box IoU@0.5 | **84.6% Box IoU@0.5** | **+46.4% IoU Improvement** |
+| **RS Region Grounding** | Not evaluated on grounding benchmark | **NOT PROVEN** (VRSBench not evaluated) | **N/A** |
 | **RS Scene Captioning** | 0.52 CIDEr | **1.14 CIDEr** | **+0.62 CIDEr Gain** |
 | **10-Band Forest Canopy** | 0.312 mIoU (RGB only) | **0.6907 mIoU (10 bands)** | **+0.3787 mIoU Gain** |
-| **Bi-Temporal Change VQA** | 52.4% (Permutation Fragile) | **81.2% (Condition B Locked)**| **+28.8% Robustness Gain** |
+| **Bi-Temporal Change VQA** | 38.50% (Deterministic Only) | **59.00% (Hybrid)** | **+20.50% Accuracy Gain** |
 
 ---
 

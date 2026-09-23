@@ -118,7 +118,7 @@ flowchart TD
     subgraph ConditionChecks ["2. Physical Environmental Analysis"]
         CloudDetect{"Cloud / Haze / Shadow Present<br/>in Optical Spectral Bands?"}
         DielectricEval{"Calibrated Radar Backscatter<br/>σ° < -18.0 dB (Specular Water)?"}
-        DoubleBounce{"High Orthogonal Return<br/>σ° > -6.0 dB (Corner Double-Bounce)?"}
+        DoubleBounce{"High Orthogonal Return<br/>σ° > +5 dB (Corner Double-Bounce)?"}
     end
 
     subgraph ArbitrationMatrix ["3. Deterministic Wave Propagation Physics Rules"]

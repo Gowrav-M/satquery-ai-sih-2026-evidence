@@ -12,7 +12,7 @@ Earth Observation (EO) satellite constellations operated by ISRO (Cartosat, RISA
 
 1. **The Specialist Silo:** Interpreting multi-band optical reflectances, radar backscatter decibels, and temporal interferograms traditionally requires specialized GIS scientists writing manual GDAL/Python scripts for each specific scene.
 2. **The Cloud Cover Impasse:** Optical sensors cannot penetrate tropical monsoon cloud cover, while radar imagery is complex to interpret visually due to speckle noise and terrain geometry.
-3. **The AI Hallucination Risk:** Commercial general-purpose Vision-Language Models (VLMs) hallucinate geographic features, invent coordinates, and round critical surface areas, making them dangerous for mission-critical disaster response and resource planning.
+3. **The AI Hallucination Risk:** Commercial general-purpose Vision-Language Models (VLMs) hallucinate geographic features, invent coordinates, and round critical surface areas, making them dangerous for operational disaster response and resource planning.
 
 **The Solution Mandate:**  
 Build an AI-powered Visual Question Answering (VQA) and interactive analysis system capable of interpreting natural language user inquiries across multi-sensor, multi-temporal satellite imagery, producing verified, physically-grounded answers with spatial evidence overlays.
@@ -23,11 +23,11 @@ Build an AI-powered Visual Question Answering (VQA) and interactive analysis sys
 
 ### Clause 1: Single Optical/Multispectral or SAR Image Analysis
 - **Requirement:** Support natural language VQA, visual grounding, and high-level scene captioning on individual satellite acquisitions.
-- **SatQuery Evidence:** Integrated `SingleImageSpecialist` with deterministic NDWI/NDVI calculation, complemented by fine-tuned `Florence-2-RS-LoRA` for text-guided region bounding. Evaluated on RSVQA (88.7%) and VRSBench (84.6% IoU).
+- **SatQuery Evidence:** Integrated `SingleImageSpecialist` with deterministic NDWI/NDVI calculation, complemented by fine-tuned `Florence-2-RS-LoRA` for text-guided region bounding. Evaluated on RSVQA-LR (29.40% Overall, 53.71% Presence on 500 held-out items). VRSBench: NOT EVALUATED.
 
 ### Clause 2: Bi-Temporal Remote-Sensing Pair Analysis
 - **Requirement:** Process two spatially corresponding observations acquired at different dates to identify, describe, and quantify land-cover changes.
-- **SatQuery Evidence:** `BiTemporalSpecialist` featuring Fourier 2D cross-correlation displacement filtering ($<6.0\text{ px}$ barrier), differential index calculation ($\Delta\text{NDBI}$, $\Delta\text{NDVI}$), and agglomerative change clustering. Evaluated on CDVQA (81.2% Condition B).
+- **SatQuery Evidence:** `BiTemporalSpecialist` featuring Fourier 2D cross-correlation displacement filtering ($<6.0\text{ px}$ barrier), differential index calculation ($\Delta\text{NDBI}$, $\Delta\text{NDVI}$), and agglomerative change clustering. Evaluated on CDVQA (59.00% Hybrid on 200 test pairs).
 
 ### Clause 3: Cross-Modal Pair (Optical + SAR) Fusion
 - **Requirement:** Co-registered optical and synthetic aperture radar (SAR) imagery for complementary analysis (e.g. Sentinel-1/2 or Cartosat-2S + RISAT-1A).

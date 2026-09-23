@@ -1,12 +1,12 @@
 # SatQuery AI — Specialist Bypass & Fault Tolerance Audit
-## Robustness Under Partial Tool Unavailability | SIH 2026 Problem Statement 26167 (ISRO / SAC)
+## Fault Tolerance Under Partial Tool Unavailability | SIH 2026 Problem Statement 26167 (ISRO / SAC)
 **Team:** STARFORGE  
 
 ---
 
 ## 1. Test Methodology
 
-In mission-critical aerospace applications, automated agents must gracefully handle degraded hardware, corrupted model files, or unavailable external services without crashing or hallucinating fallback data. We evaluated SatQuery AI under intentional specialist bypass and fault-injection scenarios:
+In operational aerospace applications, automated agents must gracefully handle degraded hardware, corrupted model files, or unavailable external services without crashing or hallucinating fallback data. We evaluated SatQuery AI under intentional specialist bypass and fault-injection scenarios:
 
 | Failure / Bypass Condition | Injected State | Expected Agent Behavior | Observed Agent Behavior | Status |
 | :--- | :--- | :--- | :--- | :--- |

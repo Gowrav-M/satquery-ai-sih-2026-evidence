@@ -224,7 +224,7 @@ Detailed documentation: [`LIMITATIONS.md`](LIMITATIONS.md)
 
 ## 10. Public vs Private Repository Boundary
 
-| Capability / Asset | Public Evidence Package (`SatQuery-AI-SIH-2026-Evidence/`) | Private Engineering Repository (`d:\SATQUERY`) |
+| Capability / Asset | Public Evidence Package (`SatQuery-AI-SIH-2026-Evidence/`) | Private Engineering Repository |
 | :--- | :--- | :--- |
 | **Purpose** | Supplementary technical evidence & validation record | Complete implementation codebase & development history |
 | **Source Code** | None included (no `.py`, `.tsx`, `.ts` implementations) | Full Python backend, React frontend, training routines |

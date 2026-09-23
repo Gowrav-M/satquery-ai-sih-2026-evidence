@@ -1,7 +1,7 @@
 # SatQuery AI — Hero Demo Forensic Truth Audit
 
 **Audit Date:** September 22, 2026  
-**Auditor:** Maestro AI Forensic Pipeline (Zero-Overclaim Mandate)  
+**Auditor:** Team STARFORGE Internal Audit (Zero-Overclaim Mandate)  
 **Purpose:** Ensure every claim made in demonstrations, slides, and public repositories exactly matches physical sensor metadata, code execution thresholds, and real test outputs.
 
 ---

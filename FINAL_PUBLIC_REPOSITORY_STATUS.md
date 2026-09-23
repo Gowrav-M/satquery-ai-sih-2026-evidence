@@ -1,8 +1,8 @@
 # SatQuery AI — Final Public Repository Status
 
 **Audit Date:** September 22, 2026  
-**Auditor:** Maestro AI Forensic Pipeline  
-**Target Repository:** `d:\SATQUERY\SatQuery-AI-SIH-2026-Evidence/`  
+**Auditor:** Team STARFORGE Internal Audit  
+**Target Repository:** `https://github.com/Gowrav-M/satquery-ai-sih-2026-evidence`  
 
 ---
 

@@ -1,7 +1,7 @@
 # SatQuery AI — Final Model Runtime Truth Audit
 
 **Audit Date:** September 22, 2026  
-**Auditor:** Maestro AI Forensic Pipeline (Zero-Overclaim Mandate)  
+**Auditor:** Team STARFORGE Internal Audit (Zero-Overclaim Mandate)  
 **Strict Principle:** *"Configured" != "Executed"* and *"Checkpoint exists" != "Runtime used"*.
 
 ---

@@ -27,9 +27,9 @@ flowchart TD
 
 | Provider Identifier | Model Backbone | Role in Pipeline | Typical Latency | Verification Status |
 | :--- | :--- | :--- | :--- | :--- |
-| **`AGENTROUTER`** | DeepSeek-V4-Flash | Primary High-Throughput Reasoning Brain | $5,600\text{ ms}$ | **LIVE_VERIFIED** |
+| **`AGENTROUTER`** | DeepSeek-V4-Flash | Primary High-Throughput Reasoning Brain | $5,600\text{ ms}$ | **CONFIGURED — EXECUTION NOT VERIFIED** |
 | **`OPENROUTER`** | Nemotron 3 Ultra 550B | Tier 2 Complex Multi-Step Reasoning Fallback | $7,200\text{ ms}$ | **CONFIGURED** |
-| **`GEMINI`** | Gemini 2.5 Flash | Tier 3 High-Context Multimodal Fallback | $4,100\text{ ms}$ | **CONFIGURED** |
+| **`GEMINI`** | Gemini 2.5 Flash | Primary Active Reasoning Engine | $250\text{–}2,300\text{ ms}$ | **LIVE_VERIFIED** |
 | **`NVIDIA_NIM`** | Nemotron 70B / 550B | Tier 4 Enterprise Inference Fallback | $6,400\text{ ms}$ | **CONFIGURED** |
 | **`LOCAL_RS_MODEL`** | Pure Deterministic Python | 100% Offline Standalone Physical Engine | $<1,200\text{ ms}$ | **PERMANENTLY ACTIVE** |
 

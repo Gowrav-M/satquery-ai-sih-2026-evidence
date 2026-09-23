@@ -3162,11 +3162,5 @@
         "title": "VerificationStatus"
       }
     }
-  },
-  "servers": [
-    {
-      "url": "https://api.satquery.internal",
-      "description": "Internal Production Cluster"
-    }
-  ]
+  }
 }

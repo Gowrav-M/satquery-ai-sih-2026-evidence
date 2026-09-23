@@ -9,8 +9,8 @@
 - **Base Architecture:** `microsoft/Florence-2-base` (232M base parameters)
 - **Adaptation Mechanism:** PEFT LoRA (Rank $r=16$, Alpha $\alpha=32$, Dropout $0.05$)
 - **Adapter Parameters:** 3,842,048 trainable parameters (Total: ~235.8M)
-- **Checkpoint SHA-256:** `84d1fa37c92b5e201b1e948fca8c027419e48a12903fe5c2a0349b1e9a2b5e20`
-- **File Size:** 15.4 MB (`adapter_model.safetensors`)
+- **Checkpoint SHA-256:** `741681f95a5e02b252aac38dedd526c80e641c9232f0f59b42d955dda21c1673`
+- **File Size:** 3.4 MB (`adapter_model.safetensors`)
 - **Training Datasets:** BigEarthNet RS VLM Corpus + VRSBench Remote Sensing Grounding Subset
 - **License:** Microsoft OpenRAIL
 

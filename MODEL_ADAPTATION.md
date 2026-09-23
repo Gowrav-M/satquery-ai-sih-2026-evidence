@@ -15,11 +15,11 @@
 
 | Model Name | Role | Base Model | Adaptation Method | Training Dataset | Checkpoint SHA-256 | Live Production Status |
 | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
-| **CROMA-Base** | Cross-Modal Latent Alignment | 12-ch Optical + 2-ch Radar ViT | Joint Contrastive Cross-Attention | Global Paired Sentinel-1/2 Tiles | `0238d814b53108f3...` | **ACTIVE** (Under `CROMA_LIMITED_EVIDENCE` policy) |
-| **SegFormer-B0 DLT** | 10-Band Multi-Spectral Canopy Segmentation | MiT-B0 Multi-Spectral Transformer | Multi-Spectral Fine-Tuning (Unweighted CE) | Copernicus DLT 2018 + Sentinel-2 L2A | `7b8e1f5923bc0912...` | **ACTIVE** (Dominant Leaf Type segmentation) |
-| **Florence-2-RS-LoRA** | Visual Grounding & Scene Captioning | `microsoft/Florence-2-base` (232M) | PEFT LoRA (Rank 16, Alpha 32) | BigEarthNet RS + RS Grounding & VQA Datasets | `84d1fa37c92b5e20...` | **ACTIVE** (Text-guided bounding box grounding; VQA enforces Immediate Null Policy) |
-| **CDVQA Siamese** | Bi-Temporal Change VQA | Siamese Dual-Branch ResNet/ViT | Condition B Temporal Regularization | CDVQA Bi-temporal Benchmark | `3a9f1c7e92b8d4e5...` | **ACTIVE** (Bi-temporal change description under 2D Fourier barrier) |
-| **Primary Agent Brain** | Query Intent & Orchestration | Multi-Tier Cascade (DeepSeek-V4-Flash / Gemini / Nemotron) | Multi-Billion Frontier Pretraining | Structured EO Reasoning & JSON Schema | Cloud API / Local Deterministic Fallback | **ACTIVE** (Multi-tier provider cascade with offline local fallback) |
+| **CROMA-Base** | Cross-Modal Latent Alignment | 12-ch Optical + 2-ch Radar ViT | Joint Contrastive Cross-Attention | Global Paired Sentinel-1/2 Tiles | `0238d814b531...574b` | **LIVE_EXECUTED** (Integration test verified; under `CROMA_LIMITED_EVIDENCE` policy) |
+| **SegFormer-B0 DLT** | 10-Band Multi-Spectral Canopy Segmentation | MiT-B0 Multi-Spectral Transformer | Multi-Spectral Fine-Tuning (Unweighted CE) | Copernicus DLT 2018 + Sentinel-2 L2A | `0129f4549cfd...712c` | **BENCHMARK_ONLY** (Evaluated on Copernicus DLT; not in live investigation loop) |
+| **Florence-2-RS-LoRA** | Visual Grounding & Scene Captioning | `microsoft/Florence-2-base` (232M) | PEFT LoRA (Rank 16, Alpha 32) | BigEarthNet RS + RS Grounding & VQA Datasets | `741681f95a5e...1673` | **LIVE_EXECUTED** (Text-guided bounding box grounding; VQA enforces Immediate Null Policy) |
+| **CDVQA Siamese** | Bi-Temporal Change VQA | Siamese Dual-Branch ResNet/ViT | Condition B Temporal Regularization | CDVQA Bi-temporal Benchmark | `b9a0be3cae0c...7101` | **BENCHMARK_ONLY** (Offline evaluation on 200 CDVQA samples) |
+| **Primary Agent Brain** | Query Intent & Orchestration | Multi-Tier Cascade (DeepSeek-V4-Flash / Gemini / Nemotron) | Multi-Billion Frontier Pretraining | Structured EO Reasoning & JSON Schema | Cloud API / Local Deterministic Fallback | **LIVE_EXECUTED** (Gemini Flash verified; DeepSeek CONFIGURED — NOT VERIFIED) |
 
 ---
 

@@ -9,7 +9,7 @@
 - **Architecture:** Dual unimodal ViT encoders with 2D ALiBi positional biases and bidirectional cross-attention
 - **Parameters:** 194,365,440
 - **Input Channels:** 12-channel Sentinel-2 (Optical) + 2-channel Sentinel-1 (VV/VH Radar)
-- **Checkpoint SHA-256:** `0238d814b53108f3ad3b5b152d04f2f01f8d9b1c93a0a6d09e51c22bc8c58f9a`
+- **Checkpoint SHA-256:** `0238d814b53108f3574bf1ea240e38a0a6edd46173816d9a6962070561893b63`
 - **File Size:** 777.6 MB (`CROMA_base.pt`)
 - **Upstream Authors:** Anthony Fuller et al. (CVPR / NeurIPS)
 - **License:** MIT / Academic Research

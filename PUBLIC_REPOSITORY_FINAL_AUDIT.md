@@ -1,8 +1,8 @@
 # SatQuery AI — Public Repository Forensic Content Audit
 
 **Audit Date:** September 22, 2026  
-**Auditor:** Maestro AI Forensic Pipeline  
-**Target Package:** `d:\SATQUERY\SatQuery-AI-SIH-2026-Evidence/`  
+**Auditor:** Team STARFORGE Internal Audit  
+**Target Package:** `https://github.com/Gowrav-M/satquery-ai-sih-2026-evidence`  
 **Overall Package Status:** **READY FOR HUMAN REVIEW** (Do not push to GitHub yet)
 
 ---
@@ -45,7 +45,7 @@
 | `demos/hero_03_change_detail.png` | Zoomed screenshot: red difference flux identifying new construction | **YES** | **YES** | **NO** | **YES** | Detailed visual proof of bi-temporal change detection |
 | `demos/nyquist_abstention.png` | Live console screenshot: Nyquist spatial sampling barrier ($2\times\text{GSD}$) banner | **YES** | **YES** | **NO** | **YES** | Authentic UI proof of epistemic abstention |
 | `models/adaptation_evidence/adaptation_summary.md` | Summary of fine-tuning protocols, parameter counts, and LoRA configs | **YES** | **YES** | **NO** | **YES** | ML governance documentation; no binary weights |
-| `models/checkpoint_hashes.txt` | Cryptographic SHA-256 hashes of all foundation and adapted checkpoints | **YES** | **YES** | **NO** | **YES** | Cryptographic verification proof; authentic hashes |
+| `models/checkpoint_hashes.txt` | Cryptographic SHA-256 hashes of all foundation and adapted checkpoints | **YES** | **YES** | **NO** | **YES** | Cryptographic verification proof; hashes verified against on-disk checkpoint files |
 | `models/model_cards/cdvqa_siamese.md` | Model card: CDVQA Siamese difference network | **YES** | **YES** | **NO** | **YES** | Standard ML model documentation |
 | `models/model_cards/croma_base.md` | Model card: CROMA-Base and `CROMA_LIMITED_EVIDENCE` operating constraint | **YES** | **YES** | **NO** | **YES** | Standard ML model documentation |
 | `models/model_cards/florence2_rs_lora.md` | Model card: Florence-2-RS-LoRA and Immediate Null Policy | **YES** | **YES** | **NO** | **YES** | Standard ML model documentation |
