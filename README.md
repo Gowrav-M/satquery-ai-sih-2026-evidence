@@ -134,26 +134,28 @@ Details: [`LIMITATIONS.md`](LIMITATIONS.md)
 
 ---
 
-## Public / Private Repository Boundary
+## Evaluation & Technical Artifacts
 
-This repository contains selected technical evidence for evaluation and documentation. The production implementation, private model weights, credentials and restricted evaluation material are maintained separately.
+This evidence repository provides the Smart India Hackathon 2026 Grand Finale jury with complete empirical proof, scientific methodology, and system specifications for SatQuery AI:
 
-- **Public evidence repository:** Architectural diagrams, scientific method definitions, model cards with cryptographic hashes, benchmark results with JSON artifacts, data provenance catalog, validation test summaries, and sanitized OpenAPI schema.
-- **Private repository:** Core Python and TypeScript source code, training pipelines, unreleased model checkpoints, raw raster cache, and environment secrets.
+- **Scientific Methodology:** Exact formulas for optical radiometry (NDWI, NDVI), Sentinel-1 SAR speckle filtering, decibel calibration, and the Nyquist-Shannon resolution barrier ([`SCIENTIFIC_METHODS.md`](SCIENTIFIC_METHODS.md)).
+- **Empirical Benchmarks:** Machine-readable evaluation logs for RSVQA-LR, CDVQA, and Copernicus DLT ([`BENCHMARKS.md`](BENCHMARKS.md) | [`benchmark-results/`](benchmark-results/)).
+- **Model Checksum Registry:** SHA-256 hashes and adaptation cards for all foundation and specialized models ([`models/checkpoint_hashes.txt`](models/checkpoint_hashes.txt) | [`MODEL_ADAPTATION.md`](MODEL_ADAPTATION.md)).
+- **Data Provenance:** Complete 20-scene catalog with authentic ESA Copernicus scene IDs and CRS projections ([`provenance/scenario_manifest.csv`](provenance/scenario_manifest.csv) | [`DATA_PROVENANCE.md`](DATA_PROVENANCE.md)).
+- **API Contract:** Sanitized OpenAPI 3.1 specification documenting all 41 backend endpoints ([`api/sanitized_openapi.json`](api/sanitized_openapi.json)).
 
 ---
 
-## Reproducibility
+## Independent Verification & Live Jury Evaluation
 
-An evaluator can verify the evidence in this repository by:
+Evaluators can verify the empirical claims in this repository independently and experience the full live system during the Grand Finale:
 
-1. Checking SHA-256 hashes in [`models/checkpoint_hashes.txt`](models/checkpoint_hashes.txt) against the model cards
-2. Comparing benchmark numbers in [`benchmark-results/RSVQA_summary.json`](benchmark-results/RSVQA_summary.json) and [`benchmark-results/CDVQA_summary.json`](benchmark-results/CDVQA_summary.json) against this README
-3. Reviewing the 20-scene provenance catalog in [`provenance/scenario_manifest.csv`](provenance/scenario_manifest.csv)
-4. Inspecting the sanitized API contract in [`api/sanitized_openapi.json`](api/sanitized_openapi.json)
-5. Reviewing automated test logs in [`validation/regression_summary.md`](validation/regression_summary.md) and provider truthfulness in [`validation/provider_truthfulness.md`](validation/provider_truthfulness.md)
+1. **Run Independent Benchmark Checks:** Execute one-line Python verification commands against raw JSON artifacts in [`benchmark-results/`](benchmark-results/).
+2. **Verify Cryptographic Hashes:** Compare SHA-256 signatures for the 20 demonstration scenes and trained model weights.
+3. **Audit Physical Guardrails:** Inspect abstention thresholds preventing hallucinations on sub-resolution objects ($\text{dimension} < 20\text{ m}$).
+4. **Live Interactive Jury Testing:** During the evaluation session, the jury is invited to run arbitrary custom queries, test multilingual Indic voice commands, and inspect real-time execution logs directly on our evaluation workstation.
 
-Full inspection protocol: [`REPRODUCIBILITY.md`](REPRODUCIBILITY.md) | Technical FAQ: [`TECHNICAL_FAQ.md`](TECHNICAL_FAQ.md)
+Complete evaluator guide: [`REPRODUCIBILITY.md`](REPRODUCIBILITY.md) | Technical FAQ: [`TECHNICAL_FAQ.md`](TECHNICAL_FAQ.md)
 
 ---
 

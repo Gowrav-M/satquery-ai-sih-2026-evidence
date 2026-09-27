@@ -75,23 +75,22 @@ Three public benchmark evaluations were executed and verified against on-disk ar
 
 ---
 
-### Q10. What remains private?
-To protect intellectual property, private weights, and security boundaries:
-- **Private Source Code:** Python backend orchestration, agent prompt templates, and TypeScript frontend components.
-- **Model Checkpoints:** Binary neural weights (`.pt`, `.bin`, `.safetensors`) are maintained privately; their authenticity is verifiable via public SHA-256 checksums in `models/checkpoint_hashes.txt`.
-- **Credentials & API Keys:** All environment secrets and tokens are excluded.
-- **Raw Large Rasters:** Heavy GeoTIFF mosaics are archived privately; 20 representative demonstration GeoTIFFs are cataloged with open Copernicus URLs.
+### Q10. How are sensitive credentials and heavy raster assets managed?
+To ensure operational security, data privacy, and clean repository distribution:
+- **API Keys & Credentials:** All environment secrets and cloud tokens are strictly excluded from git.
+- **Heavy Rasters:** Multi-gigabyte raw GeoTIFF mosaics are cataloged with open Copernicus URLs in `provenance/scenario_manifest.csv`, while 20 representative demonstration GeoTIFFs are pre-cached for evaluation.
+- **Model Checkpoints:** Weight checksums are publicly verifiable via SHA-256 digests in [`models/checkpoint_hashes.txt`](models/checkpoint_hashes.txt) and loaded live on the evaluation workstation.
 
 ---
 
-### Q11. Can the judges understand the evidence without seeing source code?
-**Yes.** The public evidence package contains:
-- 5 comprehensive architecture diagrams illustrating end-to-end data flow, specialist dispatch, and arbitration logic.
-- 8 high-resolution forensic screenshots showing exact console outputs, pixel probe values, and vector polygons.
+### Q11. How can evaluators inspect and independently verify the system architecture?
+The public evidence package provides complete transparency for the evaluation panel:
+- 5 comprehensive architecture diagrams illustrating end-to-end data flow, specialist dispatch, and arbitration logic ([`ARCHITECTURE.md`](ARCHITECTURE.md)).
+- 8 high-resolution forensic screenshots showing exact console outputs, pixel probe values, and vector polygons ([`demos/`](demos/)).
 - Raw benchmark output JSON files (`RSVQA_summary.json`, `CDVQA_summary.json`) that can be inspected directly.
 - A 20-scene data catalog (`scenario_manifest.csv`) with verifiable ESA Copernicus scene identifiers and SHA-256 hashes.
-- Sanitized OpenAPI 3.1 schema documenting all 41 API endpoints.
-- Detailed operational hero scenarios documented directly with input rasters, queries, and vector change boundaries.
+- Sanitized OpenAPI 3.1 schema documenting all 41 API endpoints (`api/sanitized_openapi.json`).
+- Live Grand Finale Interactive Session: The jury is invited to run custom queries, probe pixels, and review code implementations directly on our evaluation workstation.
 
 ---
 
