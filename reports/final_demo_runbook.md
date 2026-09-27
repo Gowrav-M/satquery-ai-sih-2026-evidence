@@ -3,7 +3,7 @@
 
 ---
 
-## 1. Six-Act Grand Finale Presentation Flow
+## 1. Six-Act Candidate Demonstration Flow
 
 ```mermaid
 flowchart LR

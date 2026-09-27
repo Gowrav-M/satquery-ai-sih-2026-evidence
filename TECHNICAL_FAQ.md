@@ -90,7 +90,7 @@ The public evidence package provides complete transparency for the evaluation pa
 - Raw benchmark output JSON files (`RSVQA_summary.json`, `CDVQA_summary.json`) that can be inspected directly.
 - A 20-scene data catalog (`scenario_manifest.csv`) with verifiable ESA Copernicus scene identifiers and SHA-256 hashes.
 - Sanitized OpenAPI 3.1 schema documenting all 41 API endpoints (`api/sanitized_openapi.json`).
-- Live Grand Finale Interactive Session: The jury is invited to run custom queries, probe pixels, and review code implementations directly on our evaluation workstation.
+- Live Candidate Demonstration Readiness: The jury can inspect live query execution, probe pixels, and review code implementations directly on our evaluation workstation.
 
 ---
 

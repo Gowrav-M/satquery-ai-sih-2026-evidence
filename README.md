@@ -1,16 +1,24 @@
 # SatQuery AI
 
-### Agentic Earth Observation Analysis for SIH 2026 — Problem Statement 26167
-
-**Team STARFORGE**  
-**Organization:** ISRO / Space Applications Centre (SAC)  
-**Category:** Software  
-**Theme:** Space Technology
+### Smart India Hackathon 2026 — Grand Finale Candidate Qualification Dossier
+**Problem Statement 26167:** AI-Powered Visual Question Answering and Interactive Analysis for Multi-Sensor Earth Observation Data  
+**Target Organization:** Indian Space Research Organisation (ISRO) / Space Applications Centre (SAC)  
+**Team STARFORGE** | **Category:** Software | **Theme:** Space Technology
 
 ---
 
-> [!IMPORTANT]
-> This repository contains selected technical evidence for evaluation and documentation. The production implementation, private model weights, credentials and restricted evaluation material are maintained separately.
+> [!TIP]
+> ### Why Team STARFORGE Leads Problem Statement 26167 (At a Glance)
+> 
+> | Evaluation Parameter | Typical Concept Proposal | SatQuery AI (Team STARFORGE Submission) |
+> | :--- | :--- | :--- |
+> | **Execution Readiness** | Concept slides / wireframes only | **Working Interactive Prototype** with 20 real Copernicus Sentinel-1/2 scenes & 41 production endpoints |
+> | **Physical Measurement** | Neural VLM guesses/hallucinates hectares | **Deterministic GIS Band Math** (NDWI/NDVI) calculates geodesic hectares directly from pixel counts |
+> | **All-Weather Capability** | Blind under monsoon cloud cover (optical only) | **C-Band SAR Radar Integration** (Lee speckle filter, calibrated $\sigma^0\text{ dB}$, dielectric wave penetration) |
+> | **Sub-Resolution Safety** | Hallucinates small objects (e.g. cars in 10m pixels) | **Nyquist-Shannon Resolution Barrier** ($2 \times \text{GSD} = 20\text{ m}$) automatically halts impossible queries |
+> | **Public Benchmarks** | No benchmarks, or unverified 99% claims | **Audited Public Results** (RSVQA-LR 500 samples: 29.40%, CDVQA 200 pairs: 59.00%) with JSONs on disk |
+> | **Grassroots Accessibility** | English text chat only | **Multilingual Indic Voice Access** in 10 Indian languages (Kannada, Hindi, Odia, Telugu) via Sarvam AI |
+> | **Auditability** | Black-box single-turn text answer | **8-Stage Cryptographic DAG** with SHA-256 node signatures linking raw pixels to exported GeoJSON polygons |
 
 ---
 
@@ -136,7 +144,7 @@ Details: [`LIMITATIONS.md`](LIMITATIONS.md)
 
 ## Evaluation & Technical Artifacts
 
-This evidence repository provides the Smart India Hackathon 2026 Grand Finale jury with complete empirical proof, scientific methodology, and system specifications for SatQuery AI:
+This evidence repository provides SIH 2026 evaluators with complete empirical proof to support Grand Finale candidate selection for Problem Statement 26167:
 
 - **Scientific Methodology:** Exact formulas for optical radiometry (NDWI, NDVI), Sentinel-1 SAR speckle filtering, decibel calibration, and the Nyquist-Shannon resolution barrier ([`SCIENTIFIC_METHODS.md`](SCIENTIFIC_METHODS.md)).
 - **Empirical Benchmarks:** Machine-readable evaluation logs for RSVQA-LR, CDVQA, and Copernicus DLT ([`BENCHMARKS.md`](BENCHMARKS.md) | [`benchmark-results/`](benchmark-results/)).
@@ -146,14 +154,14 @@ This evidence repository provides the Smart India Hackathon 2026 Grand Finale ju
 
 ---
 
-## Independent Verification & Live Jury Evaluation
+## Independent Verification & Grand Finale Demonstration Readiness
 
-Evaluators can verify the empirical claims in this repository independently and experience the full live system during the Grand Finale:
+Evaluators can verify the empirical claims in this repository independently, and inspect our prototype demonstration readiness for the Grand Finale:
 
 1. **Run Independent Benchmark Checks:** Execute one-line Python verification commands against raw JSON artifacts in [`benchmark-results/`](benchmark-results/).
 2. **Verify Cryptographic Hashes:** Compare SHA-256 signatures for the 20 demonstration scenes and trained model weights.
 3. **Audit Physical Guardrails:** Inspect abstention thresholds preventing hallucinations on sub-resolution objects ($\text{dimension} < 20\text{ m}$).
-4. **Live Interactive Jury Testing:** During the evaluation session, the jury is invited to run arbitrary custom queries, test multilingual Indic voice commands, and inspect real-time execution logs directly on our evaluation workstation.
+4. **Grand Finale Live Demonstration Readiness:** The interactive platform is completely built, pre-tested, and ready to execute arbitrary live queries, multilingual Indic voice commands, and real-time execution traces for Grand Finale jury evaluation.
 
 Complete evaluator guide: [`REPRODUCIBILITY.md`](REPRODUCIBILITY.md) | Technical FAQ: [`TECHNICAL_FAQ.md`](TECHNICAL_FAQ.md)
 
@@ -162,7 +170,7 @@ Complete evaluator guide: [`REPRODUCIBILITY.md`](REPRODUCIBILITY.md) | Technical
 ## Team
 
 **Team STARFORGE**  
-Smart India Hackathon 2026 Grand Finale  
+Smart India Hackathon 2026 — Grand Finale Candidate Submission  
 Problem Statement 26167 (ISRO / SAC) — AI-Powered VQA and Multimodal Earth Observation Analysis
 
 - Documentation License: [CC-BY 4.0 International](https://creativecommons.org/licenses/by/4.0/)  

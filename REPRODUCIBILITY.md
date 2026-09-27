@@ -1,6 +1,6 @@
 # SatQuery AI — Evaluator Guide & Verification Protocol
 
-**Purpose:** Comprehensive guide for Smart India Hackathon 2026 Grand Finale evaluators and the ISRO / SAC technical jury to independently audit, test, and verify the claims, architecture, and empirical evidence of SatQuery AI.
+**Purpose:** Comprehensive evaluation and independent verification protocol for Smart India Hackathon 2026 evaluators scoring Team STARFORGE for Grand Finale candidate selection (Problem Statement 26167, ISRO / SAC).
 
 ---
 
@@ -71,11 +71,11 @@ All fine-tuned and adapted models are documented with their exact parameter coun
 
 ---
 
-## 5. Live Grand Finale Interactive Evaluation
+## 5. Grand Finale Demonstration Readiness & Live Prototype Verification
 
-During the SIH Grand Finale judging session, Team STARFORGE will demonstrate the fully operational, interactive SatQuery AI platform running live on our evaluation workstation:
+Team STARFORGE has already implemented and validated the complete interactive SatQuery AI platform. When selected for the Grand Finale, the system is 100% prepared for live jury evaluation:
 
-1. **Live Interactive Querying:** Evaluators are encouraged to input custom, unprompted natural language and Indic voice queries (Hindi, Kannada, Odia, Telugu) to test the system in real time.
-2. **Adversarial & Edge-Case Testing:** Test the physical gatekeeper with adversarial prompts (e.g. requesting sub-pixel vehicle detection to verify the 20 m Nyquist limit, or queries over heavy cloud cover to verify radar microwave penetration).
-3. **End-to-End Cryptographic Audit:** Inspect the live 8-stage Directed Acyclic Graph (DAG) with SHA-256 node signatures generated dynamically during query execution.
+1. **Live Interactive Querying:** The platform is configured to process custom, unprompted natural language and Indic voice queries (Hindi, Kannada, Odia, Telugu) in real time.
+2. **Adversarial & Edge-Case Testing:** The physical gatekeeper is ready to demonstrate deterministic abstention against adversarial prompts (e.g. requesting sub-pixel vehicle detection to verify the 20 m Nyquist limit, or queries over heavy cloud cover to verify radar microwave penetration).
+3. **End-to-End Cryptographic Audit:** Evaluators can inspect the live 8-stage Directed Acyclic Graph (DAG) with SHA-256 node signatures generated dynamically during query execution.
 4. **Codebase & Architecture Walkthrough:** The team welcomes in-depth code review of our backend Python GIS engines, PyTorch models, and frontend geospatial visualizer.

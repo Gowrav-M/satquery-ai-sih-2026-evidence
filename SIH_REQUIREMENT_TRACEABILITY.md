@@ -1,6 +1,6 @@
 # SatQuery AI — SIH 2026 Requirement Traceability Matrix
 ## Problem Statement 26167 (ISRO / SAC): AI-Powered VQA & Multi-Sensor Earth Analysis
-**Evaluation Scope:** Smart India Hackathon 2026 Grand Finale  
+**Evaluation Scope:** Smart India Hackathon 2026 — Grand Finale Selection & Technical Qualification  
 **Status:** Architecture and Technical Clauses Verified (Subject to Documented Operational Bounds)  
 
 ---
