@@ -143,19 +143,6 @@ This repository contains selected technical evidence for evaluation and document
 
 ---
 
-## Demo Video
-
-SatQuery AI features an end-to-end interactive demonstration workflow across three primary operational scenarios:
-
-1. **Chilika Lagoon Hydrology (Sentinel-2 Optical):** Automated NDWI band math, 22.78 km² water surface delineation, 69.88 km shoreline extraction, and Physical Gatekeeper volume refusal.
-2. **Punjab Agricultural Monitoring (Indic Voice):** Multilingual voice inquiry via Sarvam AI in Kannada, calibrated NDVI vegetative canopy analysis, sub-pixel field boundary measurement (1.1 km), and tamper-proof PMFBY crop insurance dossier export.
-3. **Bengaluru Urban SAR Radar (Multi-Sensor Microwave Fusion):** Sentinel-1 C-Band backscatter radiometry, optical-SAR consistency arbitration, 19.3% surface change swipe curtain, and OGC GeoJSON vector export.
-
-- Documentation: [`demo/DEMO_VIDEO.md`](demo/DEMO_VIDEO.md)
-- Walkthrough timeline and narration script: [`demo/demo_timeline.md`](demo/demo_timeline.md)
-
----
-
 ## Reproducibility
 
 An evaluator can verify the evidence in this repository by:

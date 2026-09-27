@@ -91,7 +91,7 @@ To protect intellectual property, private weights, and security boundaries:
 - Raw benchmark output JSON files (`RSVQA_summary.json`, `CDVQA_summary.json`) that can be inspected directly.
 - A 20-scene data catalog (`scenario_manifest.csv`) with verifiable ESA Copernicus scene identifiers and SHA-256 hashes.
 - Sanitized OpenAPI 3.1 schema documenting all 41 API endpoints.
-- A 6-act demonstration runbook with step-by-step evaluation walkthroughs.
+- Detailed operational hero scenarios documented directly with input rasters, queries, and vector change boundaries.
 
 ---
 
