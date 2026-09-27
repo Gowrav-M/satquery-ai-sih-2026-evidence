@@ -1,5 +1,5 @@
 # SatQuery AI — Live Demo Runbook
-**Target Audience:** ISRO / SAC Evaluation Panel, Jury Members  
+**Purpose:** Live interactive demonstration runbook for ISRO / SAC evaluators and jury members reviewing SatQuery AI.
 
 ---
 

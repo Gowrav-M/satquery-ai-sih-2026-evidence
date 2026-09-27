@@ -1,5 +1,5 @@
 # SatQuery AI — Automated Regression Suite & Failure Taxonomy
-**Audited Date:** September 22, 2026  
+**Evaluation Date:** September 22, 2026  
 **Execution Environment:** Python 3.11 / Pytest 8.4.2 / Windows 11 / CUDA 12  
 
 ---

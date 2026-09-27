@@ -78,4 +78,4 @@ Team STARFORGE has already implemented and validated the complete interactive Sa
 1. **Live Interactive Querying:** The platform is configured to process custom, unprompted natural language and Indic voice queries (Hindi, Kannada, Odia, Telugu) in real time.
 2. **Adversarial & Edge-Case Testing:** The physical gatekeeper is ready to demonstrate deterministic abstention against adversarial prompts (e.g. requesting sub-pixel vehicle detection to verify the 20 m Nyquist limit, or queries over heavy cloud cover to verify radar microwave penetration).
 3. **End-to-End Cryptographic Audit:** Evaluators can inspect the live 8-stage Directed Acyclic Graph (DAG) with SHA-256 node signatures generated dynamically during query execution.
-4. **Codebase & Architecture Walkthrough:** The team welcomes in-depth code review of our backend Python GIS engines, PyTorch models, and frontend geospatial visualizer.
+4. **Codebase & Architecture Walkthrough:** We welcome in-depth code review of our backend Python GIS engines, PyTorch models, and frontend geospatial visualizer.
