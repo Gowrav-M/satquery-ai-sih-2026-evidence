@@ -2,11 +2,14 @@
 
 ---
 
-## Demonstration Video Link
+## Demonstration Overview & Operational Scenarios
 
-> **Official SIH Demo Video:**  
-> Demo video: To be added before public release.  
-> The demonstration walkthrough will be uploaded before final release. Once uploaded, the unlisted link will be inserted here.
+The SatQuery AI demonstration walkthrough showcases the complete end-to-end system executing live, deterministic Earth observation analysis across multi-spectral optical and synthetic aperture radar (SAR) satellite imagery.
+
+The walkthrough validates three primary operational scenarios alongside physical integrity guardrails:
+1. **Hydrological Analysis & Physical Gatekeeper:** Sentinel-2 L2A optical water surface extraction over Chilika Lagoon with explicit physical depth/volume refusal.
+2. **Agricultural Monitoring & Indic Voice Sovereignty:** Localized voice inquiry in Kannada via Sarvam AI, calibrated NDVI vegetative canopy analysis, and PMFBY audit dossier generation.
+3. **Multi-Sensor Radar Fusion & Urban Expansion:** Sentinel-1 C-band SAR backscatter arbitration, 19.3% surface change swipe curtain, and sub-pixel co-registration verification ($0.21\text{ px} < 6.0\text{ px}$).
 
 ---
 
