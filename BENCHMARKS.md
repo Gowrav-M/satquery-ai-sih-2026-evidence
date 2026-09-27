@@ -17,7 +17,7 @@
 | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
 | **RSVQA-LR** | Single-Image Sentinel-2 MSI VQA | Official Held-Out Split (500 samples) | Overall Top-1 Accuracy (%) | **29.40%** (Presence: **53.71%**, Comparison: **44.83%**) | [`benchmark-results/RSVQA_summary.json`](benchmark-results/RSVQA_summary.json) | 2026-09-18 | **EVALUATED** |
 | **CDVQA** | Bi-Temporal Change Question Answering | Public Test Split (200 pairs) | Hybrid Accuracy (%) | **59.00%** (Det Baseline: **38.50%**, Learned: **58.00%**) | [`benchmark-results/CDVQA_summary.json`](benchmark-results/CDVQA_summary.json) | 2026-09-11 | **EVALUATED** |
-| **Copernicus DLT 2018** | 10-Band Multi-Spectral Canopy Segmentation | Test Split (3,000 tiles) | Mean IoU (3 classes) | **0.6907 mIoU** (Broadleaf: 0.7765, Conifer: 0.5136) | `benchmarks/evaluate_segformer_baseline.py` | 2026-09-15 | **EVALUATED** |
+| **Copernicus DLT 2018** | 10-Band Multi-Spectral Canopy Segmentation | Test Split (3,000 tiles) | Mean IoU (3 classes) | **0.6907 mIoU** (Broadleaf: 0.7765, Conifer: 0.5136) | [`benchmark-results/DLT_summary.json`](benchmark-results/DLT_summary.json) | 2026-09-15 | **EVALUATED** |
 | **VRSBench** | Visual Grounding on Remote Sensing | N/A | Box IoU @ 0.5 (%) | **N/A** | None | N/A | **NOT EVALUATED / NOT PROVEN** |
 | **ISRO Private Archives** | Operational Cartosat / RISAT Evaluation | Unreleased ISRO Data | Task Success Rate | **N/A** | Private Archive | N/A | **PRIVATE / NOT PROVEN** |
 

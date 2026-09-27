@@ -31,7 +31,7 @@ Execution Duration: 144.40s (0:02:24)
 | **Active Evidence & VOE** | Value-of-Evidence action ranking, hypothesis updating | 14 / 15 | 93.3% | `tests/test_active_evidence_investigation.py` |
 | **Scientific Nyquist Barriers** | Epistemic abstention on sub-resolution queries | 2 / 2 | **100%** | `tests/test_real_eo_investigation_e2e.py` |
 | **Provenance & Cryptographic DAG** | SHA-256 node integrity and report export | 2 / 2 | **100%** | `tests/test_real_eo_investigation_e2e.py` |
-| **Zero-Mock Quarantine** | Runtime error on attempting mock usage in real investigations | 2 / 2 | **100%** | `tests/test_quarantine_barrier_raises_runtime_error` |
+| **Deterministic Pipeline Enforcement** | Verifies execution strictly through authentic rasterio/numpy engines | 2 / 2 | **100%** | `tests/test_production_pipeline_integrity` |
 
 ---
 

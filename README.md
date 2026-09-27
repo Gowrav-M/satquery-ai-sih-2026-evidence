@@ -73,21 +73,21 @@ Full architecture documentation: [`ARCHITECTURE.md`](ARCHITECTURE.md) — includ
 
 ## Three Hero Investigations
 
-**Demo 01 — Water Body Delineation (Chilika Lagoon)**  
+**Investigation 01 — Single-Sensor Water Grounding (Chilika Lagoon)**  
 - **Query:** *"Identify the major open-water region in this scene."*  
 - **Input:** Sentinel-2C MSI, 2026-09-18, EPSG:32645  
 - **Method:** NDWI $\ge 0.15$ threshold, geodesic polygon area from pixel count  
 - **Observed:** **2,278.4 ha** (5,630.0 acres) of open water delineated  
 - **Evidence:** [`demos/hero_01_water.png`](demos/hero_01_water.png) | [`demos/hero_01_water_detail.png`](demos/hero_01_water_detail.png)
 
-**Demo 02 — Optical + SAR Cross-Modal Fusion (Bengaluru)**  
+**Investigation 02 — Optical + SAR Cross-Modal Fusion (Bengaluru)**  
 - **Query:** *"Do both sensors provide consistent evidence about the major land-cover pattern?"*  
 - **Input:** Sentinel-2B + Sentinel-1A C-SAR, 2026-05-12, EPSG:32643  
 - **Method:** Optical reflectance vs. SAR backscatter; $\sigma^0 < -18\text{ dB}$ for specular water, $> +5\text{ dB}$ for double-bounce built-up; interactive split curtain  
 - **Observed:** Cross-modal agreement confirmed; SAR provides independent corroboration where cloud cover attenuates optical signal  
 - **Evidence:** [`demos/hero_02_optical_sar.png`](demos/hero_02_optical_sar.png) | [`demos/hero_02_trace.png`](demos/hero_02_trace.png)
 
-**Demo 03 — Bi-Temporal Urban Expansion (Bengaluru)**  
+**Investigation 03 — Bi-Temporal Urban Expansion (Bengaluru)**  
 - **Query:** *"Did the built-up area expand between these two observations?"*  
 - **Input:** Matched Sentinel-2B pair, T1: 2026-05-12 $\to$ T2: 2026-09-19, EPSG:32643  
 - **Method:** Sub-pixel 2D Fourier phase co-registration ($0.21\text{ px} < 6.0\text{ px}$ barrier), spectral differencing  
@@ -104,7 +104,7 @@ All metrics below are reconciled against saved evaluation artifacts on disk. We 
 | :--- | :--- | :--- | :--- | :---: | :--- |
 | **RSVQA-LR** | Sentinel-2 Single-Image VQA | 500 | **29.40%** Overall (Presence: 53.71%, Comparison: 44.83%, Count: 4.72%, Attribute: 0.00%) | EVALUATED | [`RSVQA_summary.json`](benchmark-results/RSVQA_summary.json) |
 | **CDVQA** | Bi-Temporal Change Detection QA | 200 | Hybrid: **59.00%**, Deterministic: 38.50%, Learned: 58.00% | EVALUATED | [`CDVQA_summary.json`](benchmark-results/CDVQA_summary.json) |
-| **Copernicus DLT** | 10-Band Canopy Segmentation | 3,000 | **0.6907 mIoU** (Broadleaved: 0.7765, Non-Tree: 0.7820, Coniferous: 0.5136) | EVALUATED | `evaluate_segformer_baseline.py` |
+| **Copernicus DLT** | 10-Band Canopy Segmentation | 3,000 | **0.6907 mIoU** (Broadleaved: 0.7765, Non-Tree: 0.7820, Coniferous: 0.5136) | EVALUATED | [`DLT_summary.json`](benchmark-results/DLT_summary.json) |
 | **VRSBench** | Visual Grounding | N/A | N/A | NOT EVALUATED | — |
 | **ISRO Archives** | Cartosat / RISAT | Unreleased | N/A | PRIVATE / NOT PROVEN | — |
 

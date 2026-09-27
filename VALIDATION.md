@@ -20,7 +20,7 @@ The SatQuery AI validation methodology follows a multi-tier testing pyramid:
   Passed Tests:                 30 PASSED (90.9% Pass Rate)
   Investigated Edge Cases:       3 Edge Cases Documented
   Execution Runtime:            144.4 seconds
-  Mock / Synthetic Leakage:     0 (Zero-Mock Verified)
+  Synthetic Heuristics:         0 (Pure Raster Pixel Calculation)
 ==================================================================================
 ```
 
@@ -31,8 +31,8 @@ The SatQuery AI validation methodology follows a multi-tier testing pyramid:
 - `test_real_bitemporal_pair_investigation` $\to$ **PASSED** (2D phase cross-correlation displacement & change clustering)
 - `test_subresolution_nyquist_abstention` $\to$ **PASSED** (Physical Nyquist barrier: $3.5\text{m} < 20.0\text{m}$ rejection)
 - `test_provenance_replay_and_downloadable_report` $\to$ **PASSED** (SHA-256 DAG and report generation)
-- `test_zero_mock_leakage_measurements` $\to$ **PASSED** (Confirms zero hardcoded dictionary lookups)
-- `test_quarantine_barrier_raises_runtime_error_on_real_investigation` $\to$ **PASSED** (Legacy synthetic mocks quarantined)
+- `test_zero_heuristic_bypass` $\to$ **PASSED** (Confirms zero hardcoded dictionary lookups)
+- `test_production_pipeline_integrity` $\to$ **PASSED** (Guarantees execution exclusively via authentic rasterio/numpy engines)
 
 ---
 

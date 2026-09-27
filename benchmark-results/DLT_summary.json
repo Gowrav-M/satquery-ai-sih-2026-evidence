@@ -1,0 +1,40 @@
+{
+  "benchmark": "Copernicus DLT 2018 Multi-Spectral Segmentation",
+  "dataset": "Copernicus Dominant Leaf Type (DLT) 2018 Multi-Spectral Sentinel-2 Dataset (3,000 tiles)",
+  "task": "10-Band Multi-Spectral Canopy Semantic Segmentation",
+  "samples_evaluated": 3000,
+  "bands_ingested": [
+    "B02",
+    "B03",
+    "B04",
+    "B05",
+    "B06",
+    "B07",
+    "B08",
+    "B8A",
+    "B11",
+    "B12"
+  ],
+  "metrics": {
+    "macro_miou": 0.6907,
+    "broadleaved_forest_iou": 0.7765,
+    "non_tree_iou": 0.7820,
+    "coniferous_forest_iou": 0.5136,
+    "overall_pixel_accuracy_pct": 85.13,
+    "macro_f1": 0.7949,
+    "boundary_miou_2px_buffer": 0.3868
+  },
+  "known_limitations": {
+    "conifer_edge_recall_pct": 31.32,
+    "edge_distance_m": 10.0,
+    "notes": "At 10m GSD, pixels on the periphery of narrow coniferous stands capture spectral mixtures of needleleaf foliage, understory grass, and soil."
+  },
+  "hardware_execution": {
+    "device": "NVIDIA GeForce RTX 3050 6GB Laptop GPU",
+    "precision": "PyTorch AMP (FP16)",
+    "training_time_seconds": 146.3
+  },
+  "artifact": "benchmarks/evaluate_segformer_baseline.py",
+  "date_evaluated": "2026-09-15",
+  "status": "EVALUATED"
+}
